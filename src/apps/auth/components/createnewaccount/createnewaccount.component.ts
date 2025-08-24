@@ -15,8 +15,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./createnewaccount.component.scss'],
 })
 export class CreatenewaccountComponent {
-  public isHide: boolean = true;
-  public isHideConfirm: boolean = true;
+  hide: boolean = true;
+  hide2: boolean = true;
   imgSrc: any;
 
   registerForm = new FormGroup(

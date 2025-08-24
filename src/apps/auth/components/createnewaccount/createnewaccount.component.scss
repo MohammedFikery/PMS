@@ -2,5 +2,81 @@
   background-image: url(../../../../assets/images/bg1.jpg);
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    color: var(--mainColor);
+    font-size: 32px;
+    font-weight: 700;
+  }
+  h3 {
+    color: white;
+  }
+  .form-bg {
+    background-color: #314a59e5;
+    width: 75%;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 16px;
+    .example-full-width {
+      width: 100%;
+    }
+    .form-Group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .d-zone ngx-dropzone {
+      margin-block: 15px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: transparent;
+    }
+    ngx-dropzone-image-preview {
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      p {
+        background-color: hsl(7, 26%, 88%);
+        padding-block: 10px;
+        padding-left: 5px;
+        border-radius: 5px;
+      }
+    }
+
+    .form-grid > div {
+      display: flex;
+      flex-direction: column;
+    }
+    .btn {
+      width: 75%;
+      display: block;
+      margin: auto;
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      a {
+        color: var(--mainColor);
+      }
+    }
+  }
 }
