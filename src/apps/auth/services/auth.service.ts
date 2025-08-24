@@ -17,8 +17,6 @@ export class AuthService {
     let decoded: any = jwtDecode(encoded);
     localStorage.setItem('role', decoded.userGroup);
     localStorage.setItem('userName', decoded.userName);
-
-    console.log(decoded);
   }
   Register(data: object): Observable<any> {
     return this._HttpClient.post(`Users/Register`, data);
