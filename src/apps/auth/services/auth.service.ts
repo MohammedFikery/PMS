@@ -21,4 +21,8 @@ export class AuthService {
   Register(data: object): Observable<any> {
     return this._HttpClient.post(`Users/Register`, data);
   }
+      changePsswordUser(data: FormData): Observable<any> {
+  return this._HttpClient.put('Users/ChangePassword', data);
+
+}
 }
