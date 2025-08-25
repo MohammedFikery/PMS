@@ -21,4 +21,7 @@ export class AuthService {
   Register(data: object): Observable<any> {
     return this._HttpClient.post(`Users/Register`, data);
   }
+  verify(data: object): Observable<any> {
+    return this._HttpClient.put(`Users/verify`, data);
+  }
 }

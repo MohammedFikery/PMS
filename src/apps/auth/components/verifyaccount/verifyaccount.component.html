@@ -1,1 +1,32 @@
-<p>verifyaccount works!</p>
+<div class="container-fluid main-bg">
+    <img src="./assets/images/logo.svg" alt="">
+    <div class="form-bg">
+        <div>
+            <h3>welcome to PMS</h3>
+            <h2><span style="text-decoration:underline ;font-weight: 900; ">V</span>erify Account</h2>
+            <form [formGroup]="verifyAccount" (ngSubmit)="verifyNewAccount()">
+                <div class="form-Group">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>E-mail</mat-label>
+                        <input type="email" matInput placeholder="Enter your E-mail" formControlName="email">
+                    </mat-form-field>
+                    <div>
+                        <p *ngIf="(verifyAccount.get('email')?.errors?.['required'] || verifyAccount.get('email')?.errors?.['email']) && verifyAccount.get('email')?.touched"
+                            class="alert alert-danger p-2 rounded-3">
+                            E-mail is required or incorrect
+                        </p>
+                    </div>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>OTP Verification</mat-label>
+                        <input type="text" matInput placeholder="Enter Verification" formControlName="code">
+                    </mat-form-field>
+                    <div>
+                        <p *ngIf="verifyAccount.get('code')?.errors?.['required'] && verifyAccount.get('code')?.touched"
+                            class="alert alert-danger p-2 rounded-3">
+                            code is required
+                        </p>
+                    </div>
+
+                    <button class="btn-yellow btn" type="submit">Register</button>
+                </div>
