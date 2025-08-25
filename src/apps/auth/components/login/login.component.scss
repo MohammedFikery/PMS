@@ -1,0 +1,74 @@
+.main-bg {
+  background-image: url(../../../../assets/images/bg1.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    color: var(--mainColor);
+    font-size: 32px;
+    font-weight: 700;
+  }
+  h3 {
+    color: white;
+  }
+
+  .form-holder {
+    width: 667px;
+    height: 505px;
+    margin-top: 10px;
+    padding: 60px;
+    border-radius: 16px;
+
+    .login-form {
+      margin-top: 50px;
+    }
+
+    .example-full-width {
+      width: 100%;
+    }
+  }
+
+  .form-bg {
+    background-color: #315951e5;
+
+    .btn {
+      width: 75%;
+      display: block;
+      margin: auto;
+      margin-top: 50px;
+    }
+    .links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      a {
+        color: #ffff;
+      }
+    }
+  }
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent !important;
+}
+
+::ng-deep .mdc-text-field__input {
+  color: #ffff !important; 
+}
+
+::ng-deep .mdc-floating-label {
+  color: #ff9800 !important; 
+}
+
+::ng-deep .mdc-text-field__input::placeholder {
+  color: #ffff !important; 
+}
+
+::ng-deep .custom-icon {
+  color: #ffff !important;
+}
+
