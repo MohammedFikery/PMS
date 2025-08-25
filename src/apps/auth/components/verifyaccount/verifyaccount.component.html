@@ -10,23 +10,19 @@
                         <mat-label>E-mail</mat-label>
                         <input type="email" matInput placeholder="Enter your E-mail" formControlName="email">
                     </mat-form-field>
-                    <div>
-                        <p *ngIf="(verifyAccount.get('email')?.errors?.['required'] || verifyAccount.get('email')?.errors?.['email']) && verifyAccount.get('email')?.touched"
-                            class="alert alert-danger p-2 rounded-3">
-                            E-mail is required or incorrect
-                        </p>
-                    </div>
+                    <p *ngIf="(verifyAccount.get('email')?.errors?.['required'] || verifyAccount.get('email')?.errors?.['email']) && verifyAccount.get('email')?.touched"
+                        class="alert alert-danger p-2 rounded-3">
+                        E-mail is required or incorrect
+                    </p>
 
                     <mat-form-field class="example-full-width">
                         <mat-label>OTP Verification</mat-label>
                         <input type="text" matInput placeholder="Enter Verification" formControlName="code">
                     </mat-form-field>
-                    <div>
-                        <p *ngIf="verifyAccount.get('code')?.errors?.['required'] && verifyAccount.get('code')?.touched"
-                            class="alert alert-danger p-2 rounded-3">
-                            code is required
-                        </p>
-                    </div>
+                    <p *ngIf="verifyAccount.get('code')?.errors?.['required'] && verifyAccount.get('code')?.touched"
+                        class="alert alert-danger p-2 rounded-3">
+                        code is required
+                    </p>
 
                     <button class="btn-yellow btn" type="submit">Register</button>
                 </div>
