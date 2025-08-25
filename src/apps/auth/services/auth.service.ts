@@ -31,4 +31,9 @@ export class AuthService {
   forgotPassword(data: any) {
     return this._HttpClient.post(`Users/Reset/Request`, data);
   }
+  
+  verify(data: object): Observable<any> {
+    return this._HttpClient.put(`Users/verify`, data);
+  }
+
 }
