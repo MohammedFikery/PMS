@@ -24,6 +24,12 @@ export class AuthService {
     return this._HttpClient.post(`Users/Register`, data);
   }
 
+ Eman-resetPassword
+ //Send Data of Reset Forms
+  SendResetPassworForm(data:any):Observable<any>{
+     return this._HttpClient.post('Users/Reset' , data)
+  }
+
       changePsswordUser(data: FormData): Observable<any> {
   return this._HttpClient.put('Users/ChangePassword', data);
 
@@ -42,5 +48,4 @@ export class AuthService {
     return this._HttpClient.put(`Users/verify`, data);
   }
 
- 
 }
