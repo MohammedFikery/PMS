@@ -18,15 +18,20 @@
 
   .form-holder {
     width: 667px;
-    height: 505px;
     margin-top: 10px;
     padding: 60px;
     border-radius: 16px;
-
     .login-form {
       margin-top: 50px;
     }
-
+    p {
+      background-color: hsl(7, 26%, 88%);
+      padding-block: 10px;
+      padding-left: 5px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
     .example-full-width {
       width: 100%;
     }
@@ -57,18 +62,23 @@
 }
 
 ::ng-deep .mdc-text-field__input {
-  color: #ffff !important; 
+  color: #ffff !important;
 }
 
 ::ng-deep .mdc-floating-label {
-  color: #ff9800 !important; 
+  color: #ff9800 !important;
 }
 
 ::ng-deep .mdc-text-field__input::placeholder {
-  color: #ffff !important; 
+  color: #ffff !important;
 }
 
 ::ng-deep .custom-icon {
   color: #ffff !important;
 }
-
+::ng-deep input.mat-mdc-input-element:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  caret-color: white !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}

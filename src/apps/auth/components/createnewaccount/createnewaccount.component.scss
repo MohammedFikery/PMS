@@ -78,7 +78,7 @@
       align-items: center;
       justify-content: space-between;
       a {
-        color: var(--mainColor);
+        color: white;
       }
     }
   }
@@ -102,7 +102,6 @@
 }
 ::ng-deep .mat-mdc-input-element::placeholder {
   color: white !important;
-  opacity: 0.8;
 }
 ::ng-deep .mdc-line-ripple,
 ::ng-deep .mdc-line-ripple::after {
