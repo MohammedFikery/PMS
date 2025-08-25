@@ -18,9 +18,18 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { NotFountComponent } from './not-fount/not-fount.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import {MatSnackBarModule} from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
-  declarations: [SharedComponent, NotFountComponent],
+  declarations: [
+    SharedComponent,
+    NotFountComponent,
+    SidebarComponent,
+    HomeComponent,
+    NavbarComponent,
+  ],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -41,7 +50,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     MatButtonToggleModule,
     MatCardModule,
     NgxDropzoneModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -60,7 +69,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
     MatButtonToggleModule,
     MatCardModule,
     NgxDropzoneModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NavbarComponent,
+    SidebarComponent,
+    HomeComponent,
   ],
 })
 export class SharedModule {}
