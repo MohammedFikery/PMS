@@ -21,4 +21,9 @@ export class AuthService {
   Register(data: object): Observable<any> {
     return this._HttpClient.post(`Users/Register`, data);
   }
+
+ //Send Data of Reset Forms
+  SendResetPassworForm(data:any):Observable<any>{
+     return this._HttpClient.post('Users/Reset' , data)
+  }
 }
