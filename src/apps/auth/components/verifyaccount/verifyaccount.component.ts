@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-verifyaccount',
@@ -17,7 +18,7 @@ export class VerifyaccountComponent implements OnInit {
 
   constructor(
     private readonly _AuthApisService: AuthService,
-    private toastr: ToastrService,
+    private _snackBar: MatSnackBar,
     private _Router: Router
   ) {}
   ngOnInit(): void {
@@ -34,7 +35,12 @@ export class VerifyaccountComponent implements OnInit {
 
     this._AuthApisService.verify(data).subscribe({
       next: (res) => {
-        this.toastr.success('verify success!', 'success!');
+        this._snackBar.open('verify success!', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar'],
+        });
         this._Router.navigate(['/auth/login']);
       },
     });

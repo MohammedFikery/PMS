@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-createnewaccount',
@@ -40,7 +41,7 @@ export class CreatenewaccountComponent {
 
   constructor(
     private readonly _AuthService: AuthService,
-    private toastr: ToastrService,
+    private _snackBar: MatSnackBar,
     private _Router: Router
   ) {}
 
@@ -62,7 +63,12 @@ export class CreatenewaccountComponent {
 
     this._AuthService.Register(myData).subscribe({
       next: (res) => {
-        this.toastr.success('Register success', 'success!');
+        this._snackBar.open('Register successfully', 'Close', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar'],
+        });
         this._Router.navigate(['/auth/verfiyaccount']);
         this._AuthService.email = data.value.email;
       },

@@ -24,11 +24,13 @@ export class AuthService {
     return this._HttpClient.post(`Users/Register`, data);
   }
 
-      changePsswordUser(data: FormData): Observable<any> {
-  return this._HttpClient.put('Users/ChangePassword', data);
+  SendResetPassworForm(data: any): Observable<any> {
+    return this._HttpClient.post('Users/Reset', data);
+  }
 
-}
-
+  changePsswordUser(data: FormData): Observable<any> {
+    return this._HttpClient.put('Users/ChangePassword', data);
+  }
 
   login(data: any): Observable<any> {
     return this._HttpClient.post(`Users/Login`, data);
@@ -37,10 +39,8 @@ export class AuthService {
   forgotPassword(data: any) {
     return this._HttpClient.post(`Users/Reset/Request`, data);
   }
-  
+
   verify(data: object): Observable<any> {
     return this._HttpClient.put(`Users/verify`, data);
   }
-
- 
 }

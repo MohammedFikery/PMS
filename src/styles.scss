@@ -124,3 +124,21 @@ a {
   background-color: white;
   border: 1px solid var(--mainColor);
 }
+
+//global style eman
+.mat-mdc-text-field-wrapper {
+  padding: 0px !important;
+  background-color: transparent !important;
+
+  ::before {
+    border-bottom-color: #fff !important;
+  }
+}
+
+.mdc-line-ripple.mdc-line-ripple--active::after {
+  border-bottom-color: #fff !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: white !important;
+}
