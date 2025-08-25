@@ -24,6 +24,12 @@ export class AuthService {
     return this._HttpClient.post(`Users/Register`, data);
   }
 
+      changePsswordUser(data: FormData): Observable<any> {
+  return this._HttpClient.put('Users/ChangePassword', data);
+
+}
+
+
   login(data: any): Observable<any> {
     return this._HttpClient.post(`Users/Login`, data);
   }
@@ -36,4 +42,5 @@ export class AuthService {
     return this._HttpClient.put(`Users/verify`, data);
   }
 
+ 
 }
