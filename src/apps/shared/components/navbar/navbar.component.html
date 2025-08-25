@@ -1,1 +1,40 @@
-<p>navbar works!</p>
+<div class="container-fluid ">
+    <div class="topbar">
+
+        <!-- Search -->
+        <div class="d-flex align-items-center justify-content-between w-100">
+            <img src="../../../../assets/images/navLogo.svg" alt="">
+            <mat-icon class="notification-icon me-3">notifications</mat-icon>
+
+        </div>
+        <!-- Profile & Notification -->
+        <div class="d-flex align-items-center">
+            <div class="user-profile d-flex align-items-center me-3">
+                <!-- <img src="{{imagePath}}" alt="User Avatar"> -->
+                <img src="https://i.pravatar.cc/40" alt="User Avatar">
+                <div class="d-flex align-items-start justify-content-between flex-column w-25 ms-2 ">
+                    <p class="ms-2 my-0">{{username}} </p>
+                    <p class="ms-2 lead">{{userMail}}</p>
+                </div>
+
+
+            </div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>dialpad</mat-icon>
+                    <span>Redial</span>
+                </button>
+
+                <button mat-menu-item>
+                    <mat-icon>notifications_off</mat-icon>
+                    <span>Disable alerts</span>
+                </button>
+            </mat-menu>
+
+        </div>
+
+    </div>
+</div>

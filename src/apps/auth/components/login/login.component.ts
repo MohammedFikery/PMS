@@ -39,7 +39,6 @@ export class LoginComponent {
     };
 
     this._AuthService.login(myData).subscribe({
-      
       next: (res) => {
         this._snackBar.open('Login successfully', 'Close', {
           duration: 3000,
@@ -47,6 +46,8 @@ export class LoginComponent {
           verticalPosition: 'top',
           panelClass: ['success-snackbar'],
         });
+        localStorage.setItem('userToken', res.token);
+        this._AuthService.getProfile();
         this._Router.navigate(['/dashboard']);
         this._AuthService.email = this.loginForm.value.email;
       },
