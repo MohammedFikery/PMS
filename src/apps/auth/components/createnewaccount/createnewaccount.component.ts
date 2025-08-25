@@ -63,7 +63,7 @@ export class CreatenewaccountComponent {
     this._AuthService.Register(myData).subscribe({
       next: (res) => {
         this.toastr.success('Register success', 'success!');
-        this._Router.navigate(['/auth/verify']);
+        this._Router.navigate(['/auth/verfiyaccount']);
         this._AuthService.email = data.value.email;
       },
     });
