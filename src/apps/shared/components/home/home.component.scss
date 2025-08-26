@@ -1,0 +1,104 @@
+section {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  height: auto;
+}
+
+//the section of welcoming the user
+.welcome-home {
+  background-image: url(/assets/images/home-bg.png);
+  background-size: cover;
+  background-position: top center;
+  height: 320px;
+  border-radius: 10px;
+  align-items: center;
+  .home-details {
+    color: white;
+    h1 {
+      font-weight: 400;
+      font-size: 36px;
+
+      span {
+        color: rgb(238, 238, 93);
+      }
+    }
+    p {
+      font-size: 32px;
+    }
+  }
+}
+
+//the next section of describe user and tasks
+// the warapper of section
+.task-section {
+  background-color: #f8f9fb;
+  border-radius: 10px;
+  padding: 30px;
+
+  .home-description {
+    position: relative;
+    span {
+      color: black;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    p {
+      color: rgb(145, 143, 143);
+      font-size: 14px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 50px;
+      background-color: var(--mainColor);
+      left: -18px;
+      bottom: 0;
+    }
+  }
+}
+// the cards sections
+//the wrapper of each card
+.task-description {
+  background-color: #e5e6f4;
+  border-radius: 10px;
+  padding: 20px;
+  height: 140px;
+  .icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #cbcef1;
+    border-radius: 12px;
+  }
+
+
+  h6 {
+    color: rgb(132, 127, 127);
+    font-size: 12px;
+    margin: 8px 0;
+  }
+  p {
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+
+.task-description-2{
+  background-color: #F4F4E5 !important;
+   .icon-wrapper{
+       background-color: rgb(228, 228, 188);
+   }
+}
+
+.task-description-3{
+  background-color: #F4E5ED !important;
+   .icon-wrapper{
+    background-color: rgb(231, 195, 215);
+   }
+}

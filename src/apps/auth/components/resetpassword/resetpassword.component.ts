@@ -40,16 +40,19 @@ export class ResetpasswordComponent {
   }
 
   sendResetPasswordData() {
-    if (this.resetPasswordFrom.invalid) {
-      this.resetPasswordFrom.markAllAsTouched();
-      return;
-    }
+    // if (this.resetPasswordFrom.invalid) {
+    //   console.log('helooo2');
+      
+    //   this.resetPasswordFrom.markAllAsTouched();
+    //   return;
+    // }
 
     this._AuthService
       .SendResetPassworForm(this.resetPasswordFrom.value)
       .subscribe({
         next: (res) => {
           //toaster to display respond message
+          console.log('helloo1');
           this._snackBar.open('Register successfully', 'Close', {
             duration: 3000,
             horizontalPosition: 'right',
@@ -58,6 +61,11 @@ export class ResetpasswordComponent {
           });
           this._Router.navigate(['/auth/resetPassword']);
         },
-      });
+          error:(err)=>{
+            console.log(err);       
+      },
+    
+      }
+    );
   }
 }
