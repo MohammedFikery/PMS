@@ -79,7 +79,7 @@
                             <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
-                                <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                                <mat-icon class="eye-icon ">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
                             </button>
                         </mat-form-field>
                         <div>
@@ -104,7 +104,7 @@
                             <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword">
                             <button mat-icon-button matSuffix (click)="hide2 = !hide2"
                                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
-                                <mat-icon>{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
+                                <mat-icon class="eye-icon ">{{ hide2 ? 'visibility_off' : 'visibility' }}</mat-icon>
                             </button>
                         </mat-form-field>
                         <div>
@@ -120,7 +120,7 @@
                 <a class="text-decoration-none text-dark" routerLink="/auth/verfiyaccount">verify account?</a>
                 <a routerLink="/auth/login" class="Forgot">Login Now?</a>
             </div>
-            <button class="btn-yellow btn" type="submit" [disabled]="registerForm.invalid" >Register</button>
+            <button class="btn-yellow btn" type="submit" [disabled]="registerForm.invalid">Register</button>
         </form>
     </div>
 </div>
