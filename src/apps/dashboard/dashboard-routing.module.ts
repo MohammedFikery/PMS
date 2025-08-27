@@ -16,19 +16,19 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       { path: 'home', component: HomeComponent },
+      {
+        path: 'manger',
+        canActivate: [mangerGuard],
+        loadChildren: () =>
+          import('./manger/manger.module').then((m) => m.MangerModule),
+      },
+      {
+        path: 'employee',
+        canActivate: [employeeGuard],
+        loadChildren: () =>
+          import('./employee/employee.module').then((m) => m.EmployeeModule),
+      },
     ],
-  },
-  {
-    path: 'manger',
-    canActivate: [mangerGuard],
-    loadChildren: () =>
-      import('./manger/manger.module').then((m) => m.MangerModule),
-  },
-  {
-    path: 'employee',
-    canActivate: [employeeGuard],
-    loadChildren: () =>
-      import('./employee/employee.module').then((m) => m.EmployeeModule),
   },
 ];
 
