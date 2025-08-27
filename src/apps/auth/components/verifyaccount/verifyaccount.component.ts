@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-verifyaccount',
@@ -18,8 +17,8 @@ export class VerifyaccountComponent implements OnInit {
 
   constructor(
     private readonly _AuthApisService: AuthService,
-    private _snackBar: MatSnackBar,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService:ToastrService
   ) {}
   ngOnInit(): void {
     this.verifyAccount.get('email')?.patchValue(this._AuthApisService.email);
@@ -35,12 +34,7 @@ export class VerifyaccountComponent implements OnInit {
 
     this._AuthApisService.verify(data).subscribe({
       next: (res) => {
-        this._snackBar.open('verify success!', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          panelClass: ['success-snackbar'],
-        });
+        this._ToastrService.success('your account has been verified successfuly')
         this._Router.navigate(['/auth/login']);
       },
     });

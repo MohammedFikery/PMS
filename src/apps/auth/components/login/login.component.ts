@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent {
   constructor(
     private readonly _AuthService: AuthService,
     private _Router: Router,
-    private _snackBar: MatSnackBar
+    private _ToastrService:ToastrService
   ) {}
 
   login() {
@@ -40,12 +40,7 @@ export class LoginComponent {
 
     this._AuthService.login(myData).subscribe({
       next: (res) => {
-        this._snackBar.open('Login successfully', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          panelClass: ['success-snackbar'],
-        });
+        this._ToastrService.success('you have been login successfully')
         localStorage.setItem('userToken', res.token);
         this._AuthService.getProfile();
         this._Router.navigate(['/dashboard']);

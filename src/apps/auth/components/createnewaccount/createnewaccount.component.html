@@ -1,6 +1,6 @@
-<div class="container-fluid main-bg">
-    <img src="./assets/images/logo.svg" alt="">
-    <div class="form-bg">
+<div class="container-fluid main-bg p-4">
+    <img src="./assets/images/logo.svg" alt="" class="25 mt-4 register-img">
+    <div class="form-bg px-4 py-3">
         <div>
             <h3>welcome to PMS</h3>
             <h2>Create New Account</h2>
@@ -120,7 +120,7 @@
                 <a class="text-decoration-none text-dark" routerLink="/auth/verfiyaccount">verify account?</a>
                 <a routerLink="/auth/login" class="Forgot">Login Now?</a>
             </div>
-            <button class="btn-yellow btn" type="submit">Register</button>
+            <button class="btn-yellow btn" type="submit" [disabled]="registerForm.invalid" >Register</button>
         </form>
     </div>
 </div>

@@ -24,10 +24,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   getCurrentUser() {
     this.currentUser = this._SharedService.getCurrentUser().subscribe({
       next: (res) => {
-        console.log(res);
+        this.username = res.userName
         this.userMail = res.email;
-        this.imagePath =
-          'https://upskilling-egypt.com:3006/' + `${res.imagePath}`;
+        this.imagePath ='https://upskilling-egypt.com:3003/'+`${res.imagePath}`;
+        console.log(res);
+        
       },
     });
   }

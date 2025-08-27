@@ -19,7 +19,7 @@
     background-color: #314a59e5;
     width: 75%;
     margin-top: 10px;
-    padding: 20px;
+    padding: 10px;
     border-radius: 16px;
     .example-full-width {
       width: 100%;
@@ -78,7 +78,7 @@
       align-items: center;
       justify-content: space-between;
       a {
-        color: white;
+        color: white !important;
       }
     }
   }
@@ -112,4 +112,9 @@
   -webkit-text-fill-color: white !important;
   caret-color: white !important;
   transition: background-color 9999s ease-in-out 0s !important;
+}
+
+button:disabled{
+  border: 1px solid red;
+  color: red;
 }

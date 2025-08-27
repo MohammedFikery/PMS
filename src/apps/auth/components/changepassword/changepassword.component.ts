@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-changepassword',
@@ -20,8 +21,8 @@ export class ChangepasswordComponent {
   hide3: boolean = true;
   constructor(
     private readonly _AuthService: AuthService,
-    private _snackBar: MatSnackBar,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService:ToastrService
   ) {}
   channgPasseorderForm = new FormGroup({
     oldPassword: new FormControl(null, [
@@ -31,7 +32,7 @@ export class ChangepasswordComponent {
     ]),
     newPassword: new FormControl(null, [
       Validators.required,
-      Validators.maxLength(20),
+      Validators.maxLength(8),
       Validators.minLength(3),
     ]),
     confirmNewPassword: new FormControl(null, [
@@ -44,12 +45,7 @@ export class ChangepasswordComponent {
   changePassword(data: FormGroup) {
     this._AuthService.changePsswordUser(data.value).subscribe({
       next: (res) => {
-        this._snackBar.open('Change PAssword successfully', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          panelClass: ['success-snackbar'],
-        });
+        this._ToastrService.success('your password has been change successfully')
         this._Router.navigate(['/auth/login']);
       },
     });

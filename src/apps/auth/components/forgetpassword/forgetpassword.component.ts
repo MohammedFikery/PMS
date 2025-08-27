@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgetpassword',
@@ -18,8 +18,8 @@ export class ForgetpasswordComponent {
 
   constructor(
     private readonly _AuthService: AuthService,
-    private _snackBar: MatSnackBar,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService:ToastrService
   ) {}
 
   forgotPassword() {
@@ -34,12 +34,7 @@ export class ForgetpasswordComponent {
 
     this._AuthService.forgotPassword(myData).subscribe({
       next: (res) => {
-        this._snackBar.open(' successfully', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          panelClass: ['success-snackbar'],
-        });
+        this._ToastrService.info('Otp Has  been send to your email')
         this._Router.navigate(['/auth/resetPassword']);
         this._AuthService.email = this.forgotForm.value.email;
       },
