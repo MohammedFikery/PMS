@@ -51,6 +51,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatCardModule,
     NgxDropzoneModule,
     MatSnackBarModule,
+    MatIconModule
   ],
   exports: [
     CommonModule,
@@ -73,6 +74,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NavbarComponent,
     SidebarComponent,
     HomeComponent,
+    MatIconModule
   ],
 })
 export class SharedModule {}

@@ -1,1 +1,25 @@
-<p>sidebar works!</p>
+<section class="sidebar" [class.expanded]="isExpanded">
+  <button type="button" class="btn-toggle" (click)="toggleSidebar(); onToggleClick()">
+    <mat-icon class="toggle-icon">
+      {{ isExpanded ? 'arrow_back_ios' : 'arrow_forward_ios' }}
+    </mat-icon>
+  </button>
+
+  <div class="menu-holder">
+    <ul>
+      <li *ngFor="let item of menu">
+        <a
+          class="link"
+          *ngIf="item.isActive === true"
+          [routerLink]="item.menuLink"
+          routerLinkActive="active"
+        >
+          <span class="icon">
+            <mat-icon class="icon-color">{{ item.icon }}</mat-icon>
+          </span>
+          <span class="label" *ngIf="isExpanded">{{ item.Title }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
