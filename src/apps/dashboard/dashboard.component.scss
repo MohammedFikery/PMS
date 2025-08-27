@@ -1,0 +1,22 @@
+.dashboard-layout {
+  display: flex;
+  height: calc(100vh - 60px); 
+  transition: all 0.3s ease;
+
+  app-sidebar {
+    width: 76px;
+    transition: width 0.3s ease;
+  }
+
+  .dashboard-content {
+    flex: 1;
+    transition: margin 0.3s ease;
+    padding: 20px 40px;
+  }
+
+  &.expanded {
+    app-sidebar {
+      width: 217px;
+    }
+  }
+}

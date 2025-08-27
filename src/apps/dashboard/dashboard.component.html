@@ -1,12 +1,22 @@
-<div class="container-fluid">
-    <app-navbar></app-navbar>
+<!-- <div class="container-fluid">
+  <app-navbar></app-navbar>
 
-    <div class="row">
-        <div class="col-md-2">
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-md-10">
-            <router-outlet></router-outlet>
-        </div>
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
     </div>
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div> -->
+
+<app-navbar></app-navbar>
+
+<div class="dashboard-layout" [class.expanded]="isExpanded">
+  <app-sidebar (toggle)="toggleSidebar()" [expanded]="isExpanded"></app-sidebar>
+
+  <div class="dashboard-content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
