@@ -8,7 +8,6 @@ import {
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-createnewaccount',
@@ -31,7 +30,7 @@ export class CreatenewaccountComponent {
       phoneNumber: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.maxLength(20),
+        Validators.maxLength(8),
         Validators.minLength(3),
       ]),
       confirmPassword: new FormControl(null),
@@ -41,8 +40,8 @@ export class CreatenewaccountComponent {
 
   constructor(
     private readonly _AuthService: AuthService,
-    private _snackBar: MatSnackBar,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService:ToastrService
   ) {}
 
   Register(data: FormGroup) {
@@ -63,12 +62,7 @@ export class CreatenewaccountComponent {
 
     this._AuthService.Register(myData).subscribe({
       next: (res) => {
-        this._snackBar.open('Register successfully', 'Close', {
-          duration: 3000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-          panelClass: ['success-snackbar'],
-        });
+        this._ToastrService.success('you have been register successfully')
         this._Router.navigate(['/auth/verfiyaccount']);
         this._AuthService.email = data.value.email;
       },
@@ -76,7 +70,6 @@ export class CreatenewaccountComponent {
   }
 
   files: File[] = [];
-
   onSelect(event: any) {
     const selectedFile = event.addedFiles[0];
     if (selectedFile) {

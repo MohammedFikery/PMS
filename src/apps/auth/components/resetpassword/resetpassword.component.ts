@@ -7,9 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Route, Router } from '@angular/router';
-
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-resetpassword',
   templateUrl: './resetpassword.component.html',
@@ -20,14 +19,14 @@ export class ResetpasswordComponent {
   IsHide: boolean = true;
   constructor(
     private _AuthService: AuthService,
-    private _snackBar: MatSnackBar,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService:ToastrService
   ) {}
   resetPasswordFrom = new FormGroup(
     {
       email: new FormControl(null, [Validators.required, Validators.email]),
       seed: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required,Validators.maxLength(8)]),
       confirmPassword: new FormControl(null),
     },
     { validators: this.checkIfPasswordIsMatch }
@@ -40,24 +39,26 @@ export class ResetpasswordComponent {
   }
 
   sendResetPasswordData() {
-    if (this.resetPasswordFrom.invalid) {
-      this.resetPasswordFrom.markAllAsTouched();
-      return;
-    }
+    // if (this.resetPasswordFrom.invalid) {
+    //   console.log('helooo2');
+      
+    //   this.resetPasswordFrom.markAllAsTouched();
+    //   return;
+    // }
 
     this._AuthService
       .SendResetPassworForm(this.resetPasswordFrom.value)
       .subscribe({
         next: (res) => {
           //toaster to display respond message
-          this._snackBar.open('Register successfully', 'Close', {
-            duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'top',
-            panelClass: ['success-snackbar'],
-          });
-          this._Router.navigate(['/auth/resetPassword']);
+          this._ToastrService.success('your password has been updatd successfuly')
+          this._Router.navigate(['/auth/login']);
         },
-      });
+          error:(err)=>{
+            console.log(err);       
+      },
+    
+      }
+    );
   }
 }
