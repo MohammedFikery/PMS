@@ -10,5 +10,5 @@ export class SharedService {
   getCurrentUser(): Observable<any> {
     return this._HttpClient.get('Users/currentUser');
   }
-  
+ 
 }

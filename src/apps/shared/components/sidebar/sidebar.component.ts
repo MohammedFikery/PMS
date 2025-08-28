@@ -43,19 +43,19 @@ export class SidebarComponent {
     {
       Title: 'Users',
       icon: 'person',
-      menuLink: '/dashboard/manger',
+      menuLink: '/dashboard/manger/user',
       isActive: this.isManager(),
     },
     {
       Title: 'Projects',
       icon: 'person',
-      menuLink: '/dashboard/manger',
+      menuLink: '/dashboard/manger/projects',
       isActive: this.isManager() || this.isEmployee(),
     },
     {
       Title: 'Tasks',
       icon: 'person',
-      menuLink: '/dashboard/manger',
+      menuLink: '/dashboard/manger/tasks',
       isActive: this.isManager() || this.isEmployee(),
     },
   ];
