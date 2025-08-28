@@ -5,7 +5,7 @@ export const mangerGuard: CanActivateFn = (route, state) => {
   const _Router = inject(Router);
   if (
     localStorage.getItem('userToken') !== null &&
-    localStorage.getItem('role') === 'Manger'
+    localStorage.getItem('role') === 'Manager'
   ) {
     return true;
   }

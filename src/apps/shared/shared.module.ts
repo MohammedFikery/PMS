@@ -22,6 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DeletComponent } from './components/delet/delet.component';
+
 @NgModule({
   declarations: [
     SharedComponent,
@@ -29,6 +31,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SidebarComponent,
     HomeComponent,
     NavbarComponent,
+    DeletComponent,
   ],
   imports: [
     CommonModule,
