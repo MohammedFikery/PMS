@@ -11,8 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$PMS-primary: mat.define-palette(mat.$indigo-palette);
-$PMS-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$PMS-primary: mat.define-palette(mat.$green-palette, 900);
+$PMS-accent: mat.define-palette(mat.$yellow-palette, 700, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $PMS-warn: mat.define-palette(mat.$red-palette);
@@ -72,6 +72,7 @@ a {
 .mat-mdc-text-field-wrapper {
   padding: 0px !important;
   background-color: transparent !important;
+  margin-bottom: 10px;
 
   ::before {
     border-bottom-color: #fff !important;
@@ -89,4 +90,7 @@ a {
 button:disabled {
   border: 1px solid var(--mainColor) !important;
   color: var(--mainColor) !important;
+}
+.mat-mdc-form-field-bottom-align::before {
+  display: none !important;
 }
