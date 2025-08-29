@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-add-edit-project',
   templateUrl: './add-edit-project.component.html',
@@ -32,6 +34,7 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
   private readonly _ToastrService = inject(ToastrService);
   private readonly _route = inject(ActivatedRoute);
   private readonly _Router = inject(Router);
+  private readonly location = inject(Location);
   CreateProjectSub!: Subscription;
   projectId: number = 0;
 
@@ -70,5 +73,9 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
         },
       });
     }
+  }
+
+  goToBack() {
+    this.location.back();
   }
 }
