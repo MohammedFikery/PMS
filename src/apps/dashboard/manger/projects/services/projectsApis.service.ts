@@ -6,7 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProjectsApisService {
+
   constructor(private readonly _HttpClient: HttpClient) {}
+    
+    getAllProjects(paramsData: any): Observable<any> {
+    return this._HttpClient.get('Project', {params: paramsData});
+    }
   CreateProject(data: any): Observable<any> {
     return this._HttpClient.post('Project', data);
   }

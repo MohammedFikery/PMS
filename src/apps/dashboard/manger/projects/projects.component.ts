@@ -1,10 +1,130 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ProjectsApisService } from './services/projectsApis.service';
+import { Router } from '@angular/router';
+import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
+import { MatDialog } from '@angular/material/dialog';
+
+export interface UserData {
+  id: string;
+  title: string;
+  modificationDate: string;
+  creationDate: string;
+}
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements AfterViewInit {
+  searchVal: string = '';
+  projectsData: any;
+  projectsList: any[] = [];
+  pageSize: number = 10;
+  pageNumber: number = 1;
 
+  displayedColumns: string[] = [
+    'id',
+    'title',
+    'modificationDate',
+    'creationDate',
+    'actions',
+  ];
+  dataSource!: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(
+    private _ProjectsService: ProjectsApisService,
+    private _Router: Router,
+    private _Dialog: MatDialog
+  ) {
+    this.getAllProjects();
+
+    // Create 100 users
+    // const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
+
+    // Assign the data to the data source for the table to render
+    // this.dataSource = new MatTableDataSource(users);
+  }
+
+  ngAfterViewInit() {
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+  }
+
+  getAllProjects() {
+    let tableParam = {
+      title: this.searchVal,
+      pageSize: this.pageSize,
+      pageNumber: this.pageNumber,
+    };
+
+    this._ProjectsService.getAllProjects(tableParam).subscribe({
+      next: (res) => {
+        this.projectsData = res;
+        this.projectsList = res.data;
+        console.log(res);
+      },
+      complete: () => {
+        this.dataSource = new MatTableDataSource(this.projectsList);
+      },
+    });
+  }
+
+  handlePaginator(event: any) {
+    this.pageNumber = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.getAllProjects();
+  }
+
+  goToAddProject() {
+    this._Router.navigate(['/dashboard/manger/projects/add']);
+  }
+
+  viewProject(row: any) {
+    console.log('View:', row);
+    // ممكن تفتح Dialog أو تروح لصفحة التفاصيل
+  }
+
+  editProject(row: any) {
+    console.log('Edit:', row);
+    this._Router.navigate([`/dashboard/manger/projects/edit/${row.id}`]);
+  }
+
+  deleteProject(row: any) {
+    console.log('Delete:', row);
+
+    const dialogRef = this._Dialog.open(DeletComponent, {
+      width: '500px',
+      data: {
+         project: row,
+         source: 'projects'
+         },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        
+           this.removeFromTable(row.id);
+        console.log('Deleting project:', row.id);
+        
+      }
+    });
+  }
+
+
+  removeFromTable(id: number) {
+ 
+  this.projectsList = this.projectsList.filter((p: any) => p.id !== id);
+
+  
+  this.dataSource.data = this.projectsList;
+
+  console.log('Project deleted:', id);
+}
 }
