@@ -109,22 +109,24 @@ export class ProjectsComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+
         
            this.removeFromTable(row.id);
         console.log('Deleting project:', row.id);
         
+          this.removeFromTable(row.id);
+
       }
     });
   }
-
-
-  removeFromTable(id: number) {
+removeFromTable(id: number) {
  
   this.projectsList = this.projectsList.filter((p: any) => p.id !== id);
 
-  
   this.dataSource.data = this.projectsList;
 
   console.log('Project deleted:', id);
 }
+
 }
+
