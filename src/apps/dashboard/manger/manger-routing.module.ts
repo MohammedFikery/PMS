@@ -1,11 +1,8 @@
-import { UsersComponent } from './users/users.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MangerComponent } from './manger.component';
 import { NotFountComponent } from 'src/apps/shared/not-fount/not-fount.component';
 
 const routes: Routes = [
-  { path: '', component: UsersComponent },
   {
     path: 'projects',
     loadChildren: () =>
@@ -21,10 +18,9 @@ const routes: Routes = [
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
   },
-  {
-    path: '**',
-    component: NotFountComponent,
-  },
+
+  { path: '', redirectTo: 'users', pathMatch: 'full' },
+  { path: '**', component: NotFountComponent },
 ];
 
 @NgModule({

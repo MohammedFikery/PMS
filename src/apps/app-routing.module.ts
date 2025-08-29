@@ -1,24 +1,26 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { NotFountComponent } from "./shared/not-fount/not-fount.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { NotFountComponent } from './shared/not-fount/not-fount.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "auth", pathMatch: "full" },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+
   {
-    path: "auth",
-    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: "dashboard",
+    path: 'dashboard',
     loadChildren: () =>
-      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
-    path: "shared",
+    path: 'shared',
     loadChildren: () =>
-      import("./shared/shared.module").then((m) => m.SharedModule),
+      import('./shared/shared.module').then((m) => m.SharedModule),
   },
-  { path: "**", component: NotFountComponent },
+
+  { path: '**', component: NotFountComponent },
 ];
 
 @NgModule({
