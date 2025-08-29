@@ -19,7 +19,9 @@ export interface UserData {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
-export class ProjectsComponent implements AfterViewInit {
+
+export class ProjectsComponent {
+
   searchVal: string = '';
   projectsData: any;
   projectsList: any[] = [];
@@ -52,10 +54,6 @@ export class ProjectsComponent implements AfterViewInit {
     // this.dataSource = new MatTableDataSource(users);
   }
 
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-  }
 
   getAllProjects() {
     let tableParam = {
@@ -68,7 +66,7 @@ export class ProjectsComponent implements AfterViewInit {
       next: (res) => {
         this.projectsData = res;
         this.projectsList = res.data;
-        console.log(res);
+
       },
       complete: () => {
         this.dataSource = new MatTableDataSource(this.projectsList);
@@ -82,33 +80,25 @@ export class ProjectsComponent implements AfterViewInit {
     this.getAllProjects();
   }
 
-  goToAddProject() {
-    this._Router.navigate(['/dashboard/manger/projects/add']);
-  }
 
-  viewProject(row: any) {
-    console.log('View:', row);
-    // ممكن تفتح Dialog أو تروح لصفحة التفاصيل
-  }
+  viewProject(row: any) {}
 
   editProject(row: any) {
-    console.log('Edit:', row);
     this._Router.navigate([`/dashboard/manger/projects/edit/${row.id}`]);
   }
 
   deleteProject(row: any) {
-    console.log('Delete:', row);
-
     const dialogRef = this._Dialog.open(DeletComponent, {
       width: '500px',
       data: {
-         project: row,
-         source: 'projects'
-         },
+        project: row,
+        source: 'projects',
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+
 
         
            this.removeFromTable(row.id);
@@ -129,4 +119,5 @@ removeFromTable(id: number) {
 }
 
 }
+
 
