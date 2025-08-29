@@ -10,5 +10,11 @@ export class SharedService {
   getCurrentUser(): Observable<any> {
     return this._HttpClient.get('Users/currentUser');
   }
- 
+
+     deleteprojects(id:number):Observable<any>{
+  return this._HttpClient.delete(`Project/${id}`)
+}
+    deleteTask(id:number):Observable<any>{
+  return this._HttpClient.delete(`Task/${id}`)
+}
 }
