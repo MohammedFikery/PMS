@@ -43,7 +43,7 @@ export class SidebarComponent {
     {
       Title: 'Users',
       icon: 'person',
-      menuLink: '/dashboard/manger/user',
+      menuLink: '/dashboard/manger/Users',
       isActive: this.isManager(),
     },
     {
