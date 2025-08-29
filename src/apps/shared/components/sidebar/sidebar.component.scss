@@ -3,7 +3,7 @@
   padding-top: 70px;
   background-color: #0e382f;
   color: #cbc8c8;
-  min-height: 120vh;
+  height: 100%;
   position: relative;
   top: 0px;
   left: 0px;
@@ -79,17 +79,18 @@
 
 .btn-toggle {
   height: 32px;
-  width: 17px;
+  width: 21px;
   background-color: #ef9b28;
   position: absolute;
   top: 10px;
-  right: -17px;
+  right: -21px;
   border: unset;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  // z-index: -1;
 }
 
 .toggle-icon {

@@ -24,6 +24,10 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DeletComponent } from './components/delet/delet.component';
 
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+
 @NgModule({
   declarations: [
     SharedComponent,
@@ -54,7 +58,8 @@ import { DeletComponent } from './components/delet/delet.component';
     MatCardModule,
     NgxDropzoneModule,
     MatSnackBarModule,
-    MatIconModule
+    MatTableModule,
+    MatSortModule,
   ],
   exports: [
     CommonModule,
@@ -77,7 +82,8 @@ import { DeletComponent } from './components/delet/delet.component';
     NavbarComponent,
     SidebarComponent,
     HomeComponent,
-    MatIconModule
+    MatTableModule,
+    MatSortModule,
   ],
 })
 export class SharedModule {}
