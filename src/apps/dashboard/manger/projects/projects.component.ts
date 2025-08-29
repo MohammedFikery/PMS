@@ -19,7 +19,9 @@ export interface UserData {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
+
 export class ProjectsComponent {
+
   searchVal: string = '';
   projectsData: any;
   projectsList: any[] = [];
@@ -52,6 +54,7 @@ export class ProjectsComponent {
     // this.dataSource = new MatTableDataSource(users);
   }
 
+
   getAllProjects() {
     let tableParam = {
       title: this.searchVal,
@@ -63,6 +66,7 @@ export class ProjectsComponent {
       next: (res) => {
         this.projectsData = res;
         this.projectsList = res.data;
+
       },
       complete: () => {
         this.dataSource = new MatTableDataSource(this.projectsList);
@@ -75,6 +79,7 @@ export class ProjectsComponent {
     this.pageSize = event.pageSize;
     this.getAllProjects();
   }
+
 
   viewProject(row: any) {}
 
@@ -96,4 +101,5 @@ export class ProjectsComponent {
       }
     });
   }
+
 }
