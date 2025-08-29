@@ -19,9 +19,7 @@ export interface UserData {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
-
 export class ProjectsComponent {
-
   searchVal: string = '';
   projectsData: any;
   projectsList: any[] = [];
@@ -46,14 +44,7 @@ export class ProjectsComponent {
     private _Dialog: MatDialog
   ) {
     this.getAllProjects();
-
-    // Create 100 users
-    // const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    // this.dataSource = new MatTableDataSource(users);
   }
-
 
   getAllProjects() {
     let tableParam = {
@@ -66,7 +57,6 @@ export class ProjectsComponent {
       next: (res) => {
         this.projectsData = res;
         this.projectsList = res.data;
-
       },
       complete: () => {
         this.dataSource = new MatTableDataSource(this.projectsList);
@@ -79,7 +69,6 @@ export class ProjectsComponent {
     this.pageSize = event.pageSize;
     this.getAllProjects();
   }
-
 
   viewProject(row: any) {}
 
@@ -98,17 +87,14 @@ export class ProjectsComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-          this.removeFromTable(row.id);
+        this.removeFromTable(row.id);
       }
     });
   }
-removeFromTable(id: number) {
- 
-  this.projectsList = this.projectsList.filter((p: any) => p.id !== id);
 
- 
-  this.dataSource.data = this.projectsList;
+  removeFromTable(id: number) {
+    this.projectsList = this.projectsList.filter((p: any) => p.id !== id);
 
-  console.log('Project deleted:', id);
-}
+    this.dataSource.data = this.projectsList;
+  }
 }
