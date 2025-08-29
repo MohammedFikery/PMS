@@ -14,7 +14,7 @@
 
   <div class="py-4 px-5">
     <mat-card>
-      <mat-form-field class="w-50">
+      <mat-form-field>
         <mat-label>Search by title</mat-label>
 
         <input matInput (keyup.enter)="getAllProjects()" [(ngModel)]="searchVal" placeholder="Ex. Food App" #input />
@@ -69,32 +69,18 @@
               </button>
               <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="viewProject(row)">
-                  <mat-icon>visibility</mat-icon>
+                  <mat-icon color="primary">visibility</mat-icon>
                   <span>View</span>
                 </button>
                 <button mat-menu-item (click)="editProject(row)">
-                  <mat-icon>edit</mat-icon>
+                  <mat-icon color="primary">edit</mat-icon>
                   <span>Edit</span>
                 </button>
                 <button mat-menu-item (click)="deleteProject(row)">
-                  <mat-icon>delete</mat-icon>
+                  <mat-icon color="primary">delete</mat-icon>
                   <span>Delete</span>
                 </button>
               </mat-menu>
-
-              <!-- <button
-                mat-icon-button
-                color="primary"
-                (click)="viewProject(row)"
-              >
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button mat-icon-button color="accent" (click)="editProject(row)">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button color="warn" (click)="deleteProject(row)">
-                <mat-icon>delete</mat-icon>
-              </button> -->
             </td>
           </ng-container>
 
