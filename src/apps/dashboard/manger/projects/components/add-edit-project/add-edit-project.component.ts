@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ProjectsApisService } from '../../services/projectsApis.service';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './add-edit-project.component.html',
   styleUrls: ['./add-edit-project.component.scss'],
 })
-export class AddEditProjectComponent implements OnInit {
+export class AddEditProjectComponent implements OnInit, OnDestroy {
+  ngOnDestroy(): void {
+    this.CreateProjectSub.unsubscribe();
+  }
   ngOnInit(): void {
     this.projectId = +this._route.snapshot.params['id'] || 0;
     console.log('projectId', this.projectId);
