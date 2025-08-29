@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../../services/shared.service';
-
+import { environment } from 'src/apps/core/environments/environments';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -24,11 +24,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   getCurrentUser() {
     this.currentUser = this._SharedService.getCurrentUser().subscribe({
       next: (res) => {
-        this.username = res.userName
+        this.username = res.userName;
         this.userMail = res.email;
-        this.imagePath ='https://upskilling-egypt.com:3003/'+`${res.imagePath}`;
-        console.log(res);
-        
+        this.imagePath = `${environment.ServerUrl}${res.imagePath}`;
       },
     });
   }

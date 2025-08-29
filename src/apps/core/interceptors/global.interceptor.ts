@@ -12,7 +12,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class GlobalInterceptor implements HttpInterceptor {
   private readonly _NgxSpinnerService = inject(NgxSpinnerService);
   public baseurl: string = 'https://upskilling-egypt.com:3003/api/v1/';
-
   constructor() {}
 
   intercept(
