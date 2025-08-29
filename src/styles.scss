@@ -15,7 +15,7 @@ $PMS-primary: mat.define-palette(mat.$green-palette, 900);
 $PMS-accent: mat.define-palette(mat.$amber-palette, 700, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$PMS-warn: mat.define-palette(mat.$red-palette,700);
+$PMS-warn: mat.define-palette(mat.$red-palette, 700);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -70,26 +70,26 @@ a {
 
 //global style eman
 .mat-mdc-text-field-wrapper {
-  padding: 0px !important;
-  background-color: transparent !important;
+  //   padding: 0px !important;
+  //   background-color: transparent !important;
   margin-bottom: 10px;
 
-  ::before {
-    border-bottom-color: #fff !important;
-  }
+  //   ::before {
+  //     border-bottom-color: #fff !important;
+  //   }
 }
 
-.mdc-line-ripple.mdc-line-ripple--active::after {
-  border-bottom-color: #fff !important;
-}
+// .mdc-line-ripple.mdc-line-ripple--active::after {
+//   border-bottom-color: #fff !important;
+// }
 
 // .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
 //   color: white !important;
 // }
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
-  color: #000 !important;
-}
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+//   color: #000 !important;
+// }
 
 button:disabled {
   border: 1px solid var(--mainColor) !important;

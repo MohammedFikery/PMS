@@ -4,7 +4,7 @@
       <h2>Projects</h2>
     </div>
     <div class="page-action">
-      <button mat-raised-button color="primary" (click)="goToAddProject()">
+      <button mat-raised-button color="primary" routerLink="/dashboard/manger/projects/add">
         <mat-icon>add</mat-icon> Add New Project
       </button>
     </div>
@@ -14,20 +14,8 @@
     <mat-card>
       <mat-form-field class="w-50">
         <mat-label>Search by title</mat-label>
-        <input
-          matInput
-          (keyup.enter)="getAllProjects()"
-          [(ngModel)]="searchVal"
-          placeholder="Ex. Food App"
-          #input
-        />
-        <button
-          *ngIf="searchVal"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="searchVal = ''"
-        >
+        <input matInput (keyup.enter)="getAllProjects()" [(ngModel)]="searchVal" placeholder="Ex. Food App" #input />
+        <button *ngIf="searchVal" matSuffix mat-icon-button aria-label="Clear" (click)="searchVal = ''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -70,11 +58,7 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>Actions</th>
             <td mat-cell *matCellDef="let row">
-              <button
-                mat-icon-button
-                [matMenuTriggerFor]="menu"
-                aria-label="Example icon-button with a menu"
-              >
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
@@ -119,14 +103,9 @@
           </tr>
         </table>
 
-        <mat-paginator
-          [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Select page of users"
-          [length]="projectsData?.totalNumberOfRecords"
-          [pageSize]="pageSize"
-          [pageIndex]="pageNumber"
-          (page)="handlePaginator($event)"
-        ></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
+          [length]="projectsData?.totalNumberOfRecords" [pageSize]="pageSize" [pageIndex]="pageNumber"
+          (page)="handlePaginator($event)"></mat-paginator>
       </div>
     </mat-card>
   </div>
