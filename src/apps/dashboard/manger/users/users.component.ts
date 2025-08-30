@@ -1,10 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
 import { UserService } from './services/user.service';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { environment } from 'src/apps/core/environments/environments';
@@ -43,7 +42,6 @@ export class UsersComponent {
     private _Router: Router,
     private _Dialog: MatDialog
   ) {
-
     this.getAllUsers();
   }
 
@@ -71,11 +69,11 @@ export class UsersComponent {
     this.getAllUsers();
   }
 
-   openDialog(row:any) {
+  openDialog(row: any) {
     this._Dialog.open(ViewUserComponent, {
       data: row,
-      width: "40vw",
-       panelClass: 'custom-dialog-container'
+      width: '40vw',
+      panelClass: 'custom-dialog-container',
     });
   }
 }
