@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjectsApisService } from '../projects/services/projectsApis.service';
 import { TasksApisService } from './services/tasksApis.service';
+import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
 
 export interface UserData {
   title: string;
@@ -58,7 +59,7 @@ export class TasksComponent {
 
     this._TasksService.getAllTasks(tableParam).subscribe({
       next: (res) => {
-        console.log(res);      
+        console.log(res);
         this.tasksData = res;
         this.tasksList = res.data;
       },
@@ -74,7 +75,33 @@ export class TasksComponent {
     this.getAllTasks();
   }
 
-  editProject(row: any) {
+  viewTask(row: any) {
     this._Router.navigate([`/dashboard/manger/tasks/edit/${row.id}`]);
+  }
+
+  editTask(row: any) {
+    this._Router.navigate([`/dashboard/manger/tasks/edit/${row.id}`]);
+  }
+
+  deleteTask(row: any) {
+    const dialogRef = this._Dialog.open(DeletComponent, {
+      width: '500px',
+      data: {
+        project: row,
+        source: 'tasks',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.removeFromTable(row.id);
+      }
+    });
+  }
+
+  removeFromTable(id: number) {
+    this.tasksList = this.tasksList.filter((p: any) => p.id !== id);
+
+    this.dataSource.data = this.tasksList;
   }
 }
