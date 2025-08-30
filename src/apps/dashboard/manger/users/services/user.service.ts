@@ -13,4 +13,8 @@ export class UserService {
       params: tableParam,
     });
   }
+
+    CreateAnManager(data:any):Observable<any>{
+    return this._HttpClient.post('Users/Create' , data )
+  }
 }

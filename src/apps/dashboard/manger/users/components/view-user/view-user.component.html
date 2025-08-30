@@ -1,0 +1,14 @@
+<section>
+    <div class="form-wrapper p-4">
+        <div class="image-wrapper text-center">
+        <img [src]="data.imagePath? url + data.imagePath: defaultImg" class="user-img rounded-circle border border-warning p-1 border-3" >
+         </div>
+        <p> <span>ID:</span> {{data.id}}</p> 
+        <p> <span>userName:</span> {{data.userName}}</p>
+        <p> <span>phone Number: </span> {{data.phoneNumber}}</p>  
+        <p> <span>Email: </span> {{data.email}}</p>  
+        <p> <span>Country: </span> {{data.country}}</p>  
+        <p> <span>Modification Date:</span> {{data.modificationDate}}</p> 
+        <p> <span>Creation Date:</span>  {{data.creationDate}}</p> 
+    </div>
+</section>

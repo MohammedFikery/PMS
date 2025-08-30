@@ -48,13 +48,13 @@ export class SidebarComponent {
     },
     {
       Title: 'Projects',
-      icon: 'person',
+      icon: 'lists',
       menuLink: '/dashboard/manger/projects',
       isActive: this.isManager() || this.isEmployee(),
     },
     {
       Title: 'Tasks',
-      icon: 'person',
+      icon: 'assignment_ind',
       menuLink: '/dashboard/manger/tasks',
       isActive: this.isManager() || this.isEmployee(),
     },
