@@ -1,0 +1,29 @@
+   
+::ng-deep .custom-dialog-container{
+    background-image: url('/assets/images/bg3.jpg');
+    background-position: center;
+    background-size: cover;
+    background-color: green;
+    padding: 30px;
+    
+}
+.form-wrapper{
+    background-color: white;
+    border-radius: 8px;
+    span{
+        color:var(--mainColor) !important;
+        font-weight: 600;
+    }
+    p{
+        color: var(--secondaryColor);
+        font-weight: 400;
+        border-bottom: 1px solid rgb(27, 37, 27 , .1);
+        margin: 20px 0;
+        font-size: 14px;
+        padding: 5px 0;
+    }
+    .user-img{
+        width: 150PX;
+        height: 150PX;
+    }
+}

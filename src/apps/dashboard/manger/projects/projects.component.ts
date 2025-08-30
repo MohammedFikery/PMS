@@ -6,6 +6,7 @@ import { ProjectsApisService } from './services/projectsApis.service';
 import { Router } from '@angular/router';
 import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ViewProjectComponent } from './view-project/view-project.component';
 
 export interface UserData {
   id: string;
@@ -19,9 +20,7 @@ export interface UserData {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
 })
-
 export class ProjectsComponent {
-
   searchVal: string = '';
   projectsData: any;
   projectsList: any[] = [];
@@ -46,14 +45,7 @@ export class ProjectsComponent {
     private _Dialog: MatDialog
   ) {
     this.getAllProjects();
-
-    // Create 100 users
-    // const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    // this.dataSource = new MatTableDataSource(users);
   }
-
 
   getAllProjects() {
     let tableParam = {
@@ -66,7 +58,6 @@ export class ProjectsComponent {
       next: (res) => {
         this.projectsData = res;
         this.projectsList = res.data;
-
       },
       complete: () => {
         this.dataSource = new MatTableDataSource(this.projectsList);
@@ -80,8 +71,13 @@ export class ProjectsComponent {
     this.getAllProjects();
   }
 
-
-  viewProject(row: any) {}
+   openDialog(row:any) {
+    this._Dialog.open(ViewProjectComponent, {
+      data: row,
+      width: "40vw",
+       panelClass: 'custom-dialog-container'
+    });
+  }
 
   editProject(row: any) {
     this._Router.navigate([`/dashboard/manger/projects/edit/${row.id}`]);
@@ -98,17 +94,14 @@ export class ProjectsComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-          this.removeFromTable(row.id);
+        this.removeFromTable(row.id);
       }
     });
   }
-removeFromTable(id: number) {
- 
-  this.projectsList = this.projectsList.filter((p: any) => p.id !== id);
 
- 
-  this.dataSource.data = this.projectsList;
+  removeFromTable(id: number) {
+    this.projectsList = this.projectsList.filter((p: any) => p.id !== id);
 
-  console.log('Project deleted:', id);
-}
+    this.dataSource.data = this.projectsList;
+  }
 }
