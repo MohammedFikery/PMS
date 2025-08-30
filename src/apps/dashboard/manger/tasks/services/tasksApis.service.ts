@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -12,5 +13,9 @@ export class TasksApisService {
   }
   EditTask(data: any, id: Number): Observable<any> {
     return this._HttpClient.put(`Task/${id}`, data);
+  }
+
+  getAllTasks(paramsData: any): Observable<any> {
+    return this._HttpClient.get('Task/Manager', { params: paramsData });
   }
 }
