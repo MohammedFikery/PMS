@@ -4,10 +4,18 @@
       <h2>Projects</h2>
     </div>
     <div class="page-action">
-
-      <button mat-raised-button color="primary" routerLink="/dashboard/manger/projects/add">
-
+      <!-- <button
+        mat-raised-button
+        color="accent"
+        routerLink="/dashboard/manger/projects/add"
+      >
         <mat-icon>add</mat-icon> Add New Project
+      </button> -->
+      <button class="btn-yellow p-2" routerLink="/dashboard/manger/Users/add">
+        <div class="d-flex justify-content-center align-items-center px-2">
+          <mat-icon class="me-2">add</mat-icon>
+          <span>Add New Project</span>
+        </div>
       </button>
     </div>
   </div>
@@ -17,9 +25,20 @@
       <mat-form-field>
         <mat-label>Search by title</mat-label>
 
-        <input matInput (keyup.enter)="getAllProjects()" [(ngModel)]="searchVal" placeholder="Ex. Food App" #input />
-        <button *ngIf="searchVal" matSuffix mat-icon-button aria-label="Clear" (click)="searchVal = ''">
-
+        <input
+          matInput
+          (keyup.enter)="getAllProjects()"
+          [(ngModel)]="searchVal"
+          placeholder="Ex. Food App"
+          #input
+        />
+        <button
+          *ngIf="searchVal"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="searchVal = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -62,9 +81,11 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>Actions</th>
             <td mat-cell *matCellDef="let row">
-
-              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+              >
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
@@ -84,7 +105,11 @@
             </td>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            class="bg-green"
+            mat-header-row
+            *matHeaderRowDef="displayedColumns"
+          ></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
           <!-- Row shown when there is no matching data. -->
@@ -95,12 +120,15 @@
           </tr>
         </table>
 
-
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
-          [length]="projectsData?.totalNumberOfRecords" [pageSize]="pageSize" [pageIndex]="pageNumber"
-          (page)="handlePaginator($event)"></mat-paginator>
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of users"
+          [length]="projectsData?.totalNumberOfRecords"
+          [pageSize]="pageSize"
+          [pageIndex]="pageNumber"
+          (page)="handlePaginator($event)"
+        ></mat-paginator>
       </div>
     </mat-card>
   </div>
 </section>
-
