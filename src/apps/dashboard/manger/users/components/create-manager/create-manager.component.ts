@@ -62,7 +62,7 @@ hide: boolean = true;
     this._UserService.CreateAnManager(myData).subscribe({
       next: (res) => {
         this._ToastrService.success('you have been Added an admin successfully')
-        // this._Router.navigate(['/users']);
+        this._Router.navigate(['/dashboard/manger/Users']);
       },
     });
   }

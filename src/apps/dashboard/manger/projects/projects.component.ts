@@ -6,7 +6,7 @@ import { ProjectsApisService } from './services/projectsApis.service';
 import { Router } from '@angular/router';
 import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ViewProjectComponent } from './view-project/view-project.component';
+import { ViewProjectComponent } from './components/view-project/view-project.component';
 
 export interface UserData {
   id: string;

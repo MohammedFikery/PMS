@@ -17,4 +17,8 @@ export class ViewUserComponent {
   console.log(this.data);
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

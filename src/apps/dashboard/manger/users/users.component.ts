@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { UserService } from './services/user.service';
 import { ViewUserComponent } from './components/view-user/view-user.component';
+import { environment } from 'src/apps/core/environments/environments';
 
 @Component({
   selector: 'app-users',
@@ -13,8 +14,9 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent {
+ defaultImg = '/assets/images/undraw_developer-avatar_f6ac (1).svg'
   searchVal: string = '';
-
+  url = environment.ServerUrl;
   usersData: any;
   usersList: any[] = [];
 
