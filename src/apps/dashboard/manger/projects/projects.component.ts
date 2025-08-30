@@ -6,6 +6,7 @@ import { ProjectsApisService } from './services/projectsApis.service';
 import { Router } from '@angular/router';
 import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ViewProjectComponent } from './view-project/view-project.component';
 
 export interface UserData {
   id: string;
@@ -70,7 +71,13 @@ export class ProjectsComponent {
     this.getAllProjects();
   }
 
-  viewProject(row: any) {}
+   openDialog(row:any) {
+    this._Dialog.open(ViewProjectComponent, {
+      data: row,
+      width: "40vw",
+       panelClass: 'custom-dialog-container'
+    });
+  }
 
   editProject(row: any) {
     this._Router.navigate([`/dashboard/manger/projects/edit/${row.id}`]);

@@ -8,8 +8,9 @@ import { SharedService } from '../../services/shared.service';
 })
 export class HomeComponent implements OnInit{
 userName:string = ''
+role: any =  localStorage.getItem('role')          
+
   constructor(private _SharedService:SharedService) {
-    
     
   }
   getCurrentUserName(){
@@ -24,6 +25,7 @@ userName:string = ''
   }
   ngOnInit(): void {
     this.getCurrentUserName()
+    this.role =  localStorage.getItem('role')          
   }
    
 }

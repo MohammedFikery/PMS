@@ -1,0 +1,206 @@
+<div class="container-fluid main-bg p-5">
+  <div class="form-bg px-4 py-3">
+    <div class="admin-welocome">
+      <h3>welcome to PMS</h3>
+      <h2>Create User Admin</h2>
+    </div>
+    <form
+      [formGroup]="addUserAdminForm"
+      (ngSubmit)="addAdmin(addUserAdminForm)"
+    >
+      <div class="form-Group">
+        <div class="d-zone">
+          <ngx-dropzone
+            (change)="onSelect($event)"
+            [multiple]="false"
+            accept="image/*"
+          >
+            <ngx-dropzone-label>
+              <img
+                src="/assets/images/undraw_developer-avatar_f6ac (1).svg"
+                alt="default"
+                style="max-width: 100%; max-height: 120px"
+            /></ngx-dropzone-label>
+            <ngx-dropzone-image-preview
+              ngProjectAs="ngx-dropzone-preview"
+              *ngFor="let f of files"
+              [file]="f"
+              [removable]="true"
+              (removed)="onRemove(f)"
+            >
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>User Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Enter your name"
+                formControlName="userName"
+              />
+            </mat-form-field>
+            <div>
+              <p
+                *ngIf="addUserAdminForm.get('userName')?.errors?.['required'] && addUserAdminForm.get('userName')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                userName is required
+              </p>
+              <p
+                *ngIf="addUserAdminForm.get('userName')?.errors?.['maxlength'] && addUserAdminForm.get('userName')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                maxlength is 8 char
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>E-mail</mat-label>
+              <input
+                type="email"
+                matInput
+                placeholder="Enter your E-mail"
+                formControlName="email"
+              />
+            </mat-form-field>
+            <div>
+              <p
+                *ngIf="(addUserAdminForm.get('email')?.errors?.['required'] || addUserAdminForm.get('email')?.errors?.['email']) && addUserAdminForm.get('email')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                E-mail is required or incorrect
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Country</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Enter your country"
+                formControlName="country"
+              />
+            </mat-form-field>
+            <div>
+              <p
+                *ngIf="addUserAdminForm.get('country')?.errors?.['required'] && addUserAdminForm.get('country')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                country is required
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>phoneNumber</mat-label>
+              <input
+                type="tel"
+                matInput
+                placeholder="Enter your phoneNumber"
+                formControlName="phoneNumber"
+              />
+            </mat-form-field>
+            <div>
+              <p
+                *ngIf="addUserAdminForm.get('phoneNumber')?.errors?.['required'] && addUserAdminForm.get('phoneNumber')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                Phone is required or incorrect
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Enter your password</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon class="eye-icon">{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+            <div>
+              <p
+                *ngIf="addUserAdminForm.get('password')?.errors?.['required'] && addUserAdminForm.get('password')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                Password is required
+              </p>
+              <p
+                *ngIf="addUserAdminForm.get('password')?.errors?.['minlength'] && addUserAdminForm.get('password')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                Password must be at least 3 characters
+              </p>
+              <p
+                *ngIf="addUserAdminForm.get('password')?.errors?.['maxlength'] && addUserAdminForm.get('password')?.touched"
+                class="alert alert-danger p-2 rounded-3"
+              >
+                Password must be no more than 20 characters
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Confirm Password</mat-label>
+              <input
+                matInput
+                [type]="hide2 ? 'password' : 'text'"
+                formControlName="confirmPassword"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide2 = !hide2"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide2"
+              >
+                <mat-icon class="eye-icon">{{
+                  hide2 ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+            <div>
+              <p
+                *ngIf="
+                  addUserAdminForm.getError('misMatch') &&
+                  addUserAdminForm.get('confirmPassword')?.touched
+                "
+                class="alert alert-danger p-2 rounded-3"
+              >
+                confirmPassword confirmation is incorrect
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn-yellow btn mt-2"
+        type="submit"
+        [disabled]="addUserAdminForm.invalid"
+      >
+        Create Admin
+      </button>
+    </form>
+  </div>
+</div>

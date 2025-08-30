@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
 import { UserService } from './services/user.service';
+import { ViewUserComponent } from './components/view-user/view-user.component';
 
 @Component({
   selector: 'app-users',
@@ -68,6 +69,11 @@ export class UsersComponent {
     this.getAllUsers();
   }
 
-  viewUser(row: any) {
+   openDialog(row:any) {
+    this._Dialog.open(ViewUserComponent, {
+      data: row,
+      width: "40vw",
+       panelClass: 'custom-dialog-container'
+    });
   }
 }
