@@ -35,3 +35,11 @@
   background-color: #315951e5;
   color: #FFFFFF;
 }
+
+textarea::placeholder,
+input::placeholder {
+  color: black;
+}
+.mat-mdc-raised-button:not(:disabled) {
+  color: black;
+}
