@@ -12,9 +12,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-edit-project.component.scss'],
 })
 export class AddEditProjectComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    this.CreateProjectSub.unsubscribe();
-  }
+
   ngOnInit(): void {
     this.projectId = +this._route.snapshot.params['id'] || 0;
     console.log('projectId', this.projectId);
@@ -59,6 +57,7 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
             `add project successfully by Id :${res.id}`,
             'add successfully'
           );
+          
           this.addEditProjectForm.reset();
         },
       });
@@ -69,13 +68,21 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
             `Update project successfully by Id :${res.id}`,
             'Update successfully'
           );
-          this._Router.navigate(['dashboard/manger/projects']);
         },
+        error:()=>{
+
+        },
+        complete:()=>{
+                    this._Router.navigate(['/dashboard/manger/projects']);
+        }
       });
     }
   }
 
   goToBack() {
     this.location.back();
+  }
+  ngOnDestroy(): void {
+    // this.CreateProjectSub.unsubscribe();
   }
 }

@@ -1,0 +1,186 @@
+<section class=" p-5">
+  <div class="container-fluid">
+    <div class="row mx-auto mt-2 g-3">
+      <div class="col-xl-4 col-md-12 display-data p-5">
+        <div class="img-wrapper text-center">
+          <img
+            [src]="url + UserData.imagePath"
+            alt=""
+            class="rounded-circle border border-3 border-warning p-2"
+          />
+        </div>
+        <div class="mt-5 data">
+          <p><span>Name:</span> {{ UserData.userName }}</p>
+          <p><span>Email:</span> {{ UserData.email }}</p>
+          <p><span>Phone Number:</span> {{ UserData.phoneNumber }}</p>
+          <p><span>Country:</span> {{ UserData.country }}</p>
+        </div>
+      </div>
+      <div class="col-xl-8 col-md-12  px-4">
+        <div class="updat-data">
+          <h1>Update Profile</h1>
+        </div>
+        <form
+          class="example-form"
+          [formGroup]="UserFrom"
+          (ngSubmit)="updateUserData(UserFrom)"
+        >
+         <div class="d-zone">
+          <ngx-dropzone
+            (change)="onSelect($event)"
+            [multiple]="false"
+            accept="image/*"
+          >
+            <ngx-dropzone-label>
+              <img
+                src="/assets/images/undraw_developer-avatar_f6ac (1).svg"
+                alt="default"
+                style="max-width: 100%; max-height: 120px"
+                class="rounded-circle border border-3 border-warning p-2"
+            /></ngx-dropzone-label>
+            <ngx-dropzone-image-preview
+              ngProjectAs="ngx-dropzone-preview"
+              *ngFor="let f of files"
+              [file]="f"
+              [removable]="true"
+              (removed)="onRemove(f)"
+            >
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+        </div>
+          <mat-form-field class="example-full-width w-100">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              placeholder="userName"
+              [value]="UserData.userName"
+              formControlName="userName"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              this.UserFrom.get('userName')?.errors &&
+              UserFrom.get('userName')?.touched
+            "
+          >
+            <p
+              *ngIf="UserFrom.get('userName')?.errors?.['required']"
+              class="text-danger validator"
+            >
+              username is required
+            </p>
+            <p
+              *ngIf="UserFrom.get('userName')?.errors?.['maxlength']"
+              class="text-danger validator"
+            >
+              The userName max length 8 characters
+            </p>
+            <p
+              *ngIf="UserFrom.get('userName')?.errors?.['pattern']"
+              class="text-danger validator"
+            >
+              The userName must contain characters and end with numbers without
+              spaces
+            </p>
+          </div>
+          <mat-form-field class="example-full-width w-100">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="email"
+              [value]="UserData.email"
+              formControlName="email"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              this.UserFrom.get('email')?.errors &&
+              UserFrom.get('email')?.touched
+            "
+          >
+            <p
+              *ngIf="UserFrom.get('email')?.errors?.['required']"
+              class="text-danger validator"
+            >
+              email is required
+            </p>
+            <p
+              *ngIf="UserFrom.get('email')?.errors?.['email']"
+              class="text-danger validator"
+            >
+              email not valid
+            </p>
+          </div>
+          <mat-form-field class="example-full-width w-100">
+            <mat-label>Phone Number</mat-label>
+            <input
+              matInput
+              placeholder="phoneNumber"
+              [value]="UserData.phoneNumber"
+              formControlName="phoneNumber"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              this.UserFrom.get('phoneNumber')?.errors &&
+              UserFrom.get('phoneNumber')?.touched
+            "
+          >
+            <p
+              *ngIf="UserFrom.get('phoneNumber')?.errors?.['required']"
+              class="text-danger validator"
+            >
+              phoneNumber is required
+            </p>
+          </div>
+          <mat-form-field class="example-full-width w-100">
+            <mat-label>Country</mat-label>
+            <input
+              matInput
+              placeholder="country"
+              [value]="UserData.country"
+              formControlName="country"
+              type="text"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              this.UserFrom.get('country')?.errors &&
+              UserFrom.get('country')?.touched
+            "
+          >
+            <p
+              *ngIf="UserFrom.get('country')?.errors?.['required']"
+              class="text-danger validator"
+            >
+              country is required
+            </p>
+          </div>
+          <mat-form-field class="w-100">
+          <mat-label>confirm your password</mat-label>
+          <input matInput [type]="isHide ? 'password' : 'text'" />
+          <button
+            matIconButton
+            matSuffix
+            [attr.aria-label]="'Hide password'"
+            (click)="isHide = !isHide"
+            class="eye-button"
+          >
+            <mat-icon class="eye-icon">{{isHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+          <div class="w-100 text-end mt-4">
+            <button
+              class="btn btn-outline-success mx-3 py-2 px-3"
+              type="button"
+              routerLink="/dashboard/home"
+            >
+              Back
+            </button>
+            <button class="btn btn-success py-2" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
