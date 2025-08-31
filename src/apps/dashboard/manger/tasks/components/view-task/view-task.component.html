@@ -1,0 +1,13 @@
+<section>
+    <div class="form-wrapper p-4">
+        <p> <span>ID:</span> {{data.id}}</p> 
+        <p> <span>Title:</span> {{data.title}}</p> 
+        <p> <span>description:</span> {{data.description}}</p> 
+        <p> <span>employee Name: </span> {{data.employee.userName}}</p>
+        <p> <span>project Name: </span> {{data.project.title}}</p>
+        <p> <span>status:</span> {{data.title}}</p> 
+        <p> <span>Modification Date:</span> {{data.modificationDate}}</p> 
+        <p> <span>Creation Date:</span>  {{data.creationDate}}</p> 
+        <div class="text-end"><button class="btn btn-warning" (click)="onNoClick()">close</button> </div>
+    </div>
+</section>

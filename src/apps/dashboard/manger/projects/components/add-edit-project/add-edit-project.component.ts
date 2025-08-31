@@ -78,7 +78,6 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
       });
     }
   }
-
   goToBack() {
     this.location.back();
   }

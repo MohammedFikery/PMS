@@ -1,0 +1,119 @@
+section {
+  background-color: rgb(246, 246, 246);
+  height: 100vh;
+}
+
+.photo-wrapper {
+  height: 200px;
+  position: relative;
+  background-image: url(/assets/images/Group\ 48102493.png);
+  background-size: cover;
+  background-position: center center;
+  background-color: green;
+}
+
+.img-wrapper {
+  img {
+    border-radius: 5px;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.display-data {
+  min-height: 79vh;
+  background-color: var(--transparentColor);
+}
+
+.data {
+  p {
+    margin: 20px 0;
+    border-bottom: 1px solid rgb(231, 223, 223);
+    padding: 10px;
+    color: var(--mainColor);
+  }
+  span {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+  }
+}
+
+.updat-data {
+  background-color: var(--light-green);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--transparentColor)
+  }
+
+  img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.d-zone {
+    text-align: center !important;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+ngx-dropzone {
+      margin-block: 5px;
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: none;
+      border-radius: 50%;
+    }
+    ngx-dropzone-image-preview {
+      width: 100% !important;
+      height: 100% !important;
+      overflow: hidden !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: center !important;
+    }
+
+    ::ng-deep .mdc-line-ripple,
+::ng-deep .mdc-line-ripple::after {
+  border-bottom-color: var(--mainColor) !important;
+}
+::ng-deep input.mat-mdc-input-element:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  caret-color: white !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled)
+  .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled)
+  .mdc-floating-label--float-above {
+  color: var(--mainColor) !important;
+  font-size: 14px;
+}
+
+.mdc-line-ripple.mdc-line-ripple--active::after {
+  border-bottom-color: var(--secondaryColorr) !important;
+}
+
+.eye-icon{
+    color: green;
+    border: unset;
+
+}
+
+.eye-button{
+   border: none;
+}

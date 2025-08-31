@@ -27,6 +27,7 @@ import { DeletComponent } from './components/delet/delet.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
     HomeComponent,
     NavbarComponent,
     DeletComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
