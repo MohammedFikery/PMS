@@ -72,9 +72,9 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
             'Update successfully'
           );
         },
-        complete:()=>{
-                    this._Router.navigate(['/dashboard/manger/projects']);
-        }
+        complete: () => {
+          this._Router.navigate(['/dashboard/manger/projects']);
+        },
       });
     }
   }
