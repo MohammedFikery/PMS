@@ -1,0 +1,65 @@
+<section class="container-fluid m-0 p-0 ">
+    <div class="projectsNavbar px-5 w-100 shadow-lg py-3 mb-5">
+        <div class="d-flex justify-content-start align-items-center">
+            <mat-icon class="mat-18" color="primary">arrow_back_ios</mat-icon>
+            <a routerLink="/dashboard/manger/tasks">View All Tasks</a>
+        </div>
+
+        <h1 class="mt-2">
+            {{ taskID === 0 ? 'Add a New tasks' : 'Edit tasks' }}
+        </h1>
+    </div>
+    <div class="w-75 m-auto shadow-lg rounded-5 px-5">
+        <form [formGroup]="addEditTaskForm" (ngSubmit)="addEditProjects(addEditTaskForm.value)"
+            class="d-flex align-items-center justify-content-center flex-column w-100  ">
+            <div class="w-100 mt-5 ">
+                <label for="Title">Title:</label>
+                <br>
+                <input type="text" id="Title" name="Title" placeholder="Name" formControlName="title" />
+                <p *ngIf="addEditTaskForm.get('title')?.errors?.['required'] && addEditTaskForm.get('title')?.touched"
+                    class="alert alert-danger p-2 mt-1 rounded-3">
+                    title is required
+                </p>
+            </div>
+            <div class="w-100 mt-5">
+                <label for="Description">Description:</label><br>
+                <textarea id="Description" name="Description" rows="4" cols="50" placeholder="Description"
+                    formControlName="description"></textarea>
+
+
+            </div>
+            <div class="w-100 mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="user">user</label>
+                        <br>
+                        <select class="w-100 h-75 rounded-3" id="user" [(ngModel)]="employeeId"
+                            formControlName="employeeId">
+                            <option [ngValue]="null" disabled>Select user...</option>
+                            <option *ngFor="let user of usersList" [ngValue]="user.id">{{ user.userName }}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="project">Project</label>
+                        <br>
+                        <select class="w-100 h-75 rounded-3" id="project" [(ngModel)]="projectId"
+                            formControlName="projectId">
+                            <option [ngValue]="null" disabled>Select project...</option>
+                            <option *ngFor="let project of projectsList" [ngValue]="project.id">{{ project.title }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between w-100 my-5">
+                <button (click)="goToBack()" type="button" mat-stroked-button>Cancel
+                </button>
+                <button type="submit" mat-raised-button color="accent"> {{ taskID === 0 ? 'Save ' : 'Edit'}}
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

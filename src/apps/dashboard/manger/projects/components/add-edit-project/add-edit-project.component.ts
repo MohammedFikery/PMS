@@ -12,7 +12,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./add-edit-project.component.scss'],
 })
 export class AddEditProjectComponent implements OnInit, OnDestroy {
-
   ngOnInit(): void {
     this.projectId = +this._route.snapshot.params['id'] || 0;
     console.log('projectId', this.projectId);
@@ -51,16 +50,20 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
       return;
     }
     if (this.projectId === 0) {
-      this._ProjectsApisService.CreateProject(data).subscribe({
-        next: (res) => {
-          this._ToastrService.success(
-            `add project successfully by Id :${res.id}`,
-            'add successfully'
-          );
-          
-          this.addEditProjectForm.reset();
-        },
-      });
+      this.CreateProjectSub = this._ProjectsApisService
+        .CreateProject(data)
+        .subscribe({
+          next: (res) => {
+            this._ToastrService.success(
+              `add project successfully by Id :${res.id}`,
+              'add successfully'
+            );
+            this.addEditProjectForm.reset();
+          },
+          complete: () => {
+            this._Router.navigate(['/dashboard/manger/projects']);
+          },
+        });
     } else {
       this._ProjectsApisService.EditProject(data, this.projectId).subscribe({
         next: (res) => {
@@ -69,20 +72,18 @@ export class AddEditProjectComponent implements OnInit, OnDestroy {
             'Update successfully'
           );
         },
-        error:()=>{
-
-        },
         complete:()=>{
                     this._Router.navigate(['/dashboard/manger/projects']);
         }
       });
     }
   }
-
   goToBack() {
     this.location.back();
   }
   ngOnDestroy(): void {
-    // this.CreateProjectSub.unsubscribe();
+    if (this.CreateProjectSub) {
+      this.CreateProjectSub.unsubscribe();
+    }
   }
 }

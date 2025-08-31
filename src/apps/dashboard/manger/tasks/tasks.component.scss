@@ -1,0 +1,44 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bg-green {
+  background-color: #315951e5;
+  color: #ffffff;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: black;
+}
+.mat-mdc-raised-button:not(:disabled) {
+  color: black;
+}
+
+.status-todo {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #E4E1F5;
+  color: #e0f7fa;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.status-done {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #009247;
+  color: #e0f7fa;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.status-inprogress {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #EF9B28A3;
+  color: #e0f7fa;
+  border-radius: 16px;
+  font-size: 14px;
+}
