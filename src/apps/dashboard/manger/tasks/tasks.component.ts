@@ -77,14 +77,6 @@ export class TasksComponent {
   viewTask(row: any) {
     this._Router.navigate([`/dashboard/manger/tasks/edit/${row.id}`]);
   }
-  
-   openDialog(row:any) {
-    this._Dialog.open(ViewTaskComponent, {
-      data: row,
-      width: "40vw",
-       panelClass: 'custom-dialog-container'
-    });
-  }
 
   editTask(row: any) {
     this._Router.navigate([`/dashboard/manger/tasks/edit/${row.id}`]);
