@@ -1,0 +1,63 @@
+<section>
+  <div class="tasks-title p-4 px-5">
+    <h2>Task Board</h2>
+  </div>
+  <div class="drag-wrapper">
+  <div class="board" cdkDropListGroup>
+  <div class="container">
+    <div class="row">
+      <!-- To Do -->
+      <div class="col-md-4">
+        <h3>To Do</h3>
+        <div
+          class="list"
+          cdkDropList
+          [cdkDropListData]="TODoList"
+          [cdkDropListConnectedTo]="['progressList', 'doneList']"
+          (cdkDropListDropped)="onDrop($event)"
+          id="TODoList"
+        >
+          <div class="card" *ngFor="let item of TODoList" cdkDrag>
+            {{ item.title }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Progress</h3>
+        <div
+          class="list"
+          cdkDropList
+          [cdkDropListData]="progressList"
+          [cdkDropListConnectedTo]="['TODoList', 'doneList']"
+          (cdkDropListDropped)="onDrop($event)"
+          id="progressList"
+        >
+          <div class="card" *ngFor="let item of progressList" cdkDrag>
+            {{ item.title }}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Done</h3>
+        <div
+          class="list"
+          cdkDropList
+          [cdkDropListData]="doneList"
+          [cdkDropListConnectedTo]="['TODoList', 'progressList']"
+          (cdkDropListDropped)="onDrop($event)"
+          id="doneList"
+        >
+          <div class="card" *ngFor="let item of doneList" cdkDrag>
+            {{ item.title }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Progress -->
+</div>
+</div>
+</section>
+
+

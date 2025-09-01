@@ -72,6 +72,7 @@ export class ProjectsComponent {
     this.getAllProjects();
   }
 
+
   openDialog(row: any) {
     this._Dialog.open(ViewProjectComponent, {
       data: row,

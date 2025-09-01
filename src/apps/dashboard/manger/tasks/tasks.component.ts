@@ -111,4 +111,12 @@ export class TasksComponent {
 
     this.dataSource.data = this.tasksList;
   }
+
+  openDialog(data: any) {
+    this._Dialog.open(ViewTaskComponent, {
+      data: data,
+      width: '40vw',
+      panelClass: 'custom-dialog-container',
+    });
+  }
 }

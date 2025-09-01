@@ -53,13 +53,13 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" *ngIf="role == 'Manager'">
         <div class="task-section p-4">
           <div class="home-description my-3">
             <span>Users</span>
             <p>Lorem ipsum dolor sit amet,consecteture</p>
           </div>
-          <div class="row gy-3" *ngIf="role == 'Manager'">
+          <div class="row gy-3">
             <div class="col-md-4">
               <div class="task-description color-1">
                 <div class="icon-wrapper">
