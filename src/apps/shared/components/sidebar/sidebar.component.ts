@@ -67,7 +67,7 @@ export class SidebarComponent {
     {
       Title: 'Tasks',
       icon: 'assignment_ind',
-      menuLink: '/dashboard/employee/tasks',
+      menuLink: '/dashboard/employee/task',
       isActive: this.isEmployee(),
     },
   ];
