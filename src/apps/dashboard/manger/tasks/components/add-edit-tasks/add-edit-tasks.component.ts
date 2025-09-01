@@ -22,9 +22,13 @@ export class AddEditTasksComponent implements OnInit, OnDestroy {
     if (this.taskID && this.taskID > 0) {
       this._ProjectsApisService.GetProjectById(this.taskID).subscribe({
         next: (res) => {
+          console.log('patchValue', res);
+
           this.addEditTaskForm.patchValue({
             title: res.title,
             description: res.description,
+            employeeId: res.manager.id,
+            projectId: res.task[0].id,
           });
         },
       });
