@@ -1,26 +1,19 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProjectsApisService } from './services/projectsApis.service';
 import { Router } from '@angular/router';
 import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
-import { MatDialog } from '@angular/material/dialog';
-import { ViewProjectComponent } from './components/view-project/view-project.component';
-
-export interface UserData {
-  id: string;
-  title: string;
-  modificationDate: string;
-  creationDate: string;
-}
+import { ProjectsApisService } from '../../services/projectsApis.service';
+import { ViewProjectComponent } from '../view-project/view-project.component';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
+  selector: 'app-manager-projects',
+  templateUrl: './manager-projects.component.html',
+  styleUrls: ['./manager-projects.component.scss'],
 })
-export class ProjectsComponent {
+export class ManagerProjectsComponent {
   searchVal: string = '';
   projectsData: any;
   projectsList: any[] = [];
@@ -34,7 +27,6 @@ export class ProjectsComponent {
     'creationDate',
     'actions',
   ];
-  
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -55,7 +47,7 @@ export class ProjectsComponent {
       pageNumber: this.pageNumber,
     };
 
-    this._ProjectsService.getAllProjects(tableParam).subscribe({
+    this._ProjectsService.getAllProjectsForManager(tableParam).subscribe({
       next: (res) => {
         this.projectsData = res;
         this.projectsList = res.data;
@@ -71,7 +63,6 @@ export class ProjectsComponent {
     this.pageSize = event.pageSize;
     this.getAllProjects();
   }
-
 
   openDialog(row: any) {
     this._Dialog.open(ViewProjectComponent, {

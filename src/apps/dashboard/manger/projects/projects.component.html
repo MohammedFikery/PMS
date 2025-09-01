@@ -4,7 +4,10 @@
       <h2>Projects</h2>
     </div>
     <div class="page-action">
-      <button class="btn-yellow p-2" routerLink="/dashboard/manger/projects/add">
+      <button
+        class="btn-yellow p-2"
+        routerLink="/dashboard/manger/projects/add"
+      >
         <div class="d-flex justify-content-center align-items-center px-2">
           <mat-icon class="me-2">add</mat-icon>
           <span>Add New Project</span>
@@ -20,9 +23,20 @@
           <mat-form-field class="w-100">
             <mat-label>Search by title</mat-label>
 
-            <input matInput (keyup.enter)="getAllProjects()" [(ngModel)]="searchVal" placeholder="Ex. Food App"
-              #input />
-            <button *ngIf="searchVal" matSuffix mat-icon-button aria-label="Clear" (click)="searchVal = ''">
+            <input
+              matInput
+              (keyup.enter)="getAllProjects()"
+              [(ngModel)]="searchVal"
+              placeholder="Ex. Food App"
+              #input
+            />
+            <button
+              *ngIf="searchVal"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="searchVal = ''"
+            >
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
@@ -65,7 +79,11 @@
               <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let row">
-                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="menu"
+                    aria-label="Example icon-button with a menu"
+                  >
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
@@ -85,7 +103,11 @@
                 </td>
               </ng-container>
 
-              <tr class="bg-green" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr
+                class="bg-green"
+                mat-header-row
+                *matHeaderRowDef="displayedColumns"
+              ></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
               <!-- Row shown when there is no matching data. -->
@@ -96,90 +118,18 @@
               </tr>
             </table>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
-              [length]="projectsData?.totalNumberOfRecords" [pageSize]="pageSize" [pageIndex]="pageNumber"
-              (page)="handlePaginator($event)"></mat-paginator>
+            <mat-paginator
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page of users"
+              [length]="projectsData?.totalNumberOfRecords"
+              [pageSize]="pageSize"
+              [pageIndex]="pageNumber"
+              (page)="handlePaginator($event)"
+            ></mat-paginator>
           </div>
         </mat-tab>
         <mat-tab label="My Projects">
-          <mat-form-field class="w-100">
-            <mat-label>Search by title</mat-label>
-
-            <input matInput (keyup.enter)="getAllProjects()" [(ngModel)]="searchVal" placeholder="Ex. Food App"
-              #input />
-            <button *ngIf="searchVal" matSuffix mat-icon-button aria-label="Clear" (click)="searchVal = ''">
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-form-field>
-
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort>
-              <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-                <td mat-cell *matCellDef="let row">{{ row.id }}</td>
-              </ng-container>
-
-              <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
-                <td mat-cell *matCellDef="let row">{{ row.title }}</td>
-              </ng-container>
-
-              <ng-container matColumnDef="modificationDate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Modification Date
-                </th>
-                <td mat-cell *matCellDef="let row">
-                  {{ row.modificationDate | date : "dd-MM-yyyy, hh:mm a" }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="creationDate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                  Creation Date
-                </th>
-                <td mat-cell *matCellDef="let row">
-                  {{ row.creationDate | date : "dd-MM-yyyy, hh:mm a" }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Actions</th>
-                <td mat-cell *matCellDef="let row">
-                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="openDialog(row)">
-                      <mat-icon color="primary">visibility</mat-icon>
-                      <span>View</span>
-                    </button>
-                    <button mat-menu-item (click)="editProject(row)">
-                      <mat-icon color="primary">edit</mat-icon>
-                      <span>Edit</span>
-                    </button>
-                    <button mat-menu-item (click)="deleteProject(row)">
-                      <mat-icon color="primary">delete</mat-icon>
-                      <span>Delete</span>
-                    </button>
-                  </mat-menu>
-                </td>
-              </ng-container>
-
-              <tr class="bg-green" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-              <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">
-                  No data matching the filter "{{ input.value }}"
-                </td>
-              </tr>
-            </table>
-
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"
-              [length]="projectsData?.totalNumberOfRecords" [pageSize]="pageSize" [pageIndex]="pageNumber"
-              (page)="handlePaginator($event)"></mat-paginator>
-          </div>
+          <app-manager-projects></app-manager-projects>
         </mat-tab>
       </mat-tab-group>
     </mat-card>

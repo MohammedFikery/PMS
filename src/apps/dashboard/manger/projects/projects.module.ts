@@ -7,9 +7,10 @@ import { SharedModule } from 'src/apps/shared/shared.module';
 
 import {MatTabsModule} from '@angular/material/tabs';
 import { ViewProjectComponent } from './components/view-project/view-project.component';
+import { ManagerProjectsComponent } from './components/manager-projects/manager-projects.component';
 
 @NgModule({
-  declarations: [ProjectsComponent, AddEditProjectComponent, ViewProjectComponent],
+  declarations: [ProjectsComponent, AddEditProjectComponent, ViewProjectComponent, ManagerProjectsComponent],
   imports: [CommonModule, ProjectsRoutingModule, SharedModule,MatTabsModule],
 
 })

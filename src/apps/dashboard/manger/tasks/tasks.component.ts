@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ProjectsApisService } from '../projects/services/projectsApis.service';
 import { TasksApisService } from './services/tasksApis.service';
 import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
 import { ViewTaskComponent } from './components/view-task/view-task.component';
@@ -43,7 +42,6 @@ export class TasksComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private _ProjectsService: ProjectsApisService,
     private _TasksService: TasksApisService,
     private _Router: Router,
     private _Dialog: MatDialog
@@ -78,6 +76,14 @@ export class TasksComponent {
 
   viewTask(row: any) {
     this._Router.navigate([`/dashboard/manger/tasks/edit/${row.id}`]);
+  }
+  
+   openDialog(row:any) {
+    this._Dialog.open(ViewTaskComponent, {
+      data: row,
+      width: "40vw",
+       panelClass: 'custom-dialog-container'
+    });
   }
 
   editTask(row: any) {
