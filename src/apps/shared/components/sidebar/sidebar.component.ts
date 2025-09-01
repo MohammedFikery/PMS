@@ -50,13 +50,25 @@ export class SidebarComponent {
       Title: 'Projects',
       icon: 'lists',
       menuLink: '/dashboard/manger/projects',
-      isActive: this.isManager() || this.isEmployee(),
+      isActive: this.isManager(),
+    },
+    {
+      Title: 'Projects',
+      icon: 'lists',
+      menuLink: '/dashboard/employee/projects',
+      isActive: this.isEmployee(),
     },
     {
       Title: 'Tasks',
       icon: 'assignment_ind',
       menuLink: '/dashboard/manger/tasks',
-      isActive: this.isManager() || this.isEmployee(),
+      isActive: this.isManager(),
+    },
+    {
+      Title: 'Tasks',
+      icon: 'assignment_ind',
+      menuLink: '/dashboard/employee/tasks',
+      isActive: this.isEmployee(),
     },
   ];
 }

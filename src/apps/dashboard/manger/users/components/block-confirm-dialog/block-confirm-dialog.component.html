@@ -1,0 +1,35 @@
+<mat-card class="example-card" appearance="outlined">
+  <img
+    mat-card-image
+    [src]="
+      './assets/images/' + (isActivated ? 'block-user.png' : 'unblock-user.png')
+    "
+  />
+  <mat-card-content>
+    <div class="w-100">
+      <h3>
+        {{ isActivated === true ? "block" : "unblcok" }}
+        {{ data.user.userName }}
+      </h3>
+      <p>
+        are you sure you want to
+        {{ isActivated === true ? "block" : "unblcok" }}
+        <span
+          [class]="'text-' + (isActivated === true ? 'danger' : 'success')"
+          >{{ data.user.userName }}</span
+        >?
+      </p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="w-100 d-flex justify-content-between">
+      <button mat-dialog-close class="btn btn-secondary">Close</button>
+      <button
+        [class]="'btn btn-' + (isActivated === true ? 'danger' : 'success')"
+        [mat-dialog-close]="true"
+      >
+        {{ isActivated === true ? "Block" : "Unblcok" }}
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

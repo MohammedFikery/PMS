@@ -8,13 +8,17 @@ import { Observable } from 'rxjs';
 export class UserService {
   constructor(private _HttpClient: HttpClient) {}
 
-  getAllUsers(tableParam : any): Observable<any> {
+  getAllUsers(tableParam: any): Observable<any> {
     return this._HttpClient.get('Users', {
       params: tableParam,
     });
   }
 
-    CreateAnManager(data:any):Observable<any>{
-    return this._HttpClient.post('Users/Create' , data )
+  CreateAnManager(data: any): Observable<any> {
+    return this._HttpClient.post('Users/Create', data);
+  }
+
+  toggleActivated(id: number): Observable<any> {
+    return this._HttpClient.put(`Users/${id}`, {});
   }
 }
