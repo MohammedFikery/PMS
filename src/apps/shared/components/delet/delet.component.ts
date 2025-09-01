@@ -42,7 +42,17 @@ export class DeletComponent {
         },
       });
     } else {
-      // هتحذف tasks
+      this._SharedService.deleteTask(id).subscribe({
+          next: (res) => {
+          console.log(res);
+
+          this.dialogRef.close(true);
+        },
+        error: () => {},
+        complete: () => {
+          this._ToastrService.success('Deleted successfully');
+        },
+      })
     }
   }
 }
