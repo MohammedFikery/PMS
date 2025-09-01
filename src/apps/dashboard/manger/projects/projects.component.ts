@@ -72,11 +72,20 @@ export class ProjectsComponent {
     this.getAllProjects();
   }
 
+<<<<<<< HEAD
    openDialog(data:any) {
     this._Dialog.open(ViewProjectComponent, {
       data: data,
       width: "40vw",
        panelClass: 'custom-dialog-container'
+=======
+
+  openDialog(row: any) {
+    this._Dialog.open(ViewProjectComponent, {
+      data: row,
+      width: '40vw',
+      panelClass: 'custom-dialog-container',
+>>>>>>> b5bb34125e30077cca2ff8e3d056c06cd671ec88
     });
   }
 

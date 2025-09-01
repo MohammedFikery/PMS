@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./projects/projects.module').then((m) => m.ProjectsModule),
   },
+<<<<<<< HEAD
+=======
+  
+  { path: 'task', component: TaskBoardComponent }
+>>>>>>> b5bb34125e30077cca2ff8e3d056c06cd671ec88
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
