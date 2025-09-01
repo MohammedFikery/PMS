@@ -1,0 +1,50 @@
+.tasks-title{
+    background-color: white;
+    height: 80px; 
+    h2{
+        font-weight: 500;
+    }  
+}
+.drag-wrapper{
+    background-color: rgb(239, 238, 238);
+    min-height: 720px;
+    padding: 30px;
+}
+
+.list {
+  max-width: 300px;         
+  min-height: 350px;         
+  background: #315951E5;     
+  border-radius: 12px;      
+  padding: 15px;
+  border: 2px dashed #ccc;   
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+  transition: background 0.3s ease;
+}
+
+.list:hover {
+  background: #9db8a3; 
+  color: black;     
+}
+
+h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card {
+  background: #EF9B28;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  cursor: grab;              /* شكل اليد */
+  transition: transform 0.2s;
+  color: white;
+}
+
+.card:active {
+  cursor: grabbing;
+  transform: scale(1.05);    /* تكبير بسيط وقت السحب */
+}

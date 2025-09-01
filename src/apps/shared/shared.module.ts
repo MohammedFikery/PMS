@@ -23,7 +23,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DeletComponent } from './components/delet/delet.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -62,6 +62,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
+    DragDropModule
   ],
   exports: [
     CommonModule,
@@ -86,6 +87,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     HomeComponent,
     MatTableModule,
     MatSortModule,
+    DragDropModule
   ],
 })
 export class SharedModule {}

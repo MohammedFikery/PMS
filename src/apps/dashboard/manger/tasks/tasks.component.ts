@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ProjectsApisService } from '../projects/services/projectsApis.service';
 import { TasksApisService } from './services/tasksApis.service';
 import { DeletComponent } from 'src/apps/shared/components/delet/delet.component';
+import { ViewTaskComponent } from './components/view-task/view-task.component';
 
 export interface UserData {
   title: string;
@@ -103,5 +104,13 @@ export class TasksComponent {
     this.tasksList = this.tasksList.filter((p: any) => p.id !== id);
 
     this.dataSource.data = this.tasksList;
+  }
+
+  openDialog(data: any) {
+    this._Dialog.open(ViewTaskComponent, {
+      data: data,
+      width: '40vw',
+      panelClass: 'custom-dialog-container',
+    });
   }
 }
