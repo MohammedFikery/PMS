@@ -71,9 +71,9 @@ export class ProjectsComponent {
     this.getAllProjects();
   }
 
-   openDialog(row:any) {
+   openDialog(data:any) {
     this._Dialog.open(ViewProjectComponent, {
-      data: row,
+      data: data,
       width: "40vw",
        panelClass: 'custom-dialog-container'
     });

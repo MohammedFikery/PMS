@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeComponent } from './employee.component';
+import { TaskBoardComponent } from './components/task-board/task-board.component';
+import { SharedModule } from 'src/apps/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    EmployeeComponent
+    EmployeeComponent,
+    TaskBoardComponent
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    SharedModule
   ]
 })
 export class EmployeeModule { }
